@@ -344,6 +344,12 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.8 (2026-03-02)
+
+* (FIX) Fixed duplicate news entry in io-package.json (E1036/E2005 fix)
+* (FIX) Added full translations for common.news (pt, nl, fr, it, es, pl, uk, zh-cn)
+* (FIX) Reduced news entries to 7 versions (W1032 fix)
+
 ### 1.2.7 (2026-03-02)
 
 * (FIX) Fixed io-package.json JSON syntax error (invalid duplicate news section removed)

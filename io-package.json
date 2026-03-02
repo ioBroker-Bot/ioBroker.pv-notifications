@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.7",
+    "version": "1.2.8",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,60 +29,96 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.8": {
+        "en": "Fixed duplicate news entry in io-package.json (E1036/E2005 fix)",
+        "de": "Doppelten news-Eintrag in io-package.json behoben (E1036/E2005 Fix)",
+        "ru": "Исправлена дублирующаяся запись news в io-package.json (исправление E1036/E2005)",
+        "pt": "Corrigida entrada duplicada de notícias no io-package.json (correção E1036/E2005)",
+        "nl": "Dubbele nieuwsvermelding in io-package.json hersteld (E1036/E2005 fix)",
+        "fr": "Correction d'une entrée de nouvelles en double dans io-package.json (correction E1036/E2005)",
+        "it": "Corretta voce duplicata delle notizie in io-package.json (correzione E1036/E2005)",
+        "es": "Entrada de noticias duplicada corregida en io-package.json (corrección E1036/E2005)",
+        "pl": "Naprawiono podwójny wpis wiadomości w io-package.json (poprawka E1036/E2005)",
+        "uk": "Виправлено подвійний запис новин у io-package.json (виправлення E1036/E2005)",
+        "zh-cn": "已修复 io-package.json 中的重复新闻条目（E1036/E2005 修复）"
+      },
       "1.2.7": {
         "en": "Fixed io-package.json JSON syntax error (invalid duplicate news section removed)",
         "de": "io-package.json JSON-Syntaxfehler behoben (ungültiger doppelter news-Abschnitt entfernt)",
-        "ru": "Исправлена ошибка синтаксиса JSON в io-package.json (удален недопустимый дублирующийся раздел news)"
+        "ru": "Исправлена ошибка синтаксиса JSON в io-package.json (удален недопустимый дублирующийся раздел news)",
+        "pt": "Erro de sintaxe JSON no io-package.json corrigido (seção de notícias duplicada removida)",
+        "nl": "JSON-syntaxfout in io-package.json hersteld (ongeldige dubbele nieuwssectie verwijderd)",
+        "fr": "Erreur de syntaxe JSON dans io-package.json corrigée (section de nouvelles en double supprimée)",
+        "it": "Errore di sintassi JSON in io-package.json corretto (sezione notizie duplicata rimossa)",
+        "es": "Error de sintaxis JSON en io-package.json corregido (sección de noticias duplicada eliminada)",
+        "pl": "Naprawiono błąd składni JSON w io-package.json (usunięto podwójną sekcję wiadomości)",
+        "uk": "Виправлено помилку синтаксису JSON у io-package.json (видалено подвійний розділ новин)",
+        "zh-cn": "已修复 io-package.json JSON 语法错误（已删除无效的重复新闻部分）"
       },
       "1.2.6": {
         "en": "Added size attributes (xs, xl) for monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption fields (E5507 fix)",
         "de": "Größenattribute (xs, xl) für monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption Felder hinzugefügt (E5507 Fix)",
-        "ru": "Добавлены атрибуты размеров (xs, xl) для полей monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption (исправление E5507)"
+        "ru": "Добавлены атрибуты размеров (xs, xl) для полей monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption (исправление E5507)",
+        "pt": "Atributos de tamanho (xs, xl) adicionados para os campos monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption (correção E5507)",
+        "nl": "Grootte-attributen (xs, xl) toegevoegd voor monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption velden (E5507 fix)",
+        "fr": "Attributs de taille (xs, xl) ajoutés pour les champs monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption (correction E5507)",
+        "it": "Aggiunti attributi di dimensione (xs, xl) per i campi monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption (correzione E5507)",
+        "es": "Atributos de tamaño (xs, xl) agregados para los campos monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption (corrección E5507)",
+        "pl": "Dodano atrybuty rozmiaru (xs, xl) dla pól monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption (poprawka E5507)",
+        "uk": "Додано атрибути розміру (xs, xl) для полів monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption (виправлення E5507)",
+        "zh-cn": "已为 monthlyStatsDay、monthlyStatsTime、weatherEnabled、weatherInIntermediate、weatherInDailyStats、highProduction、highConsumption 字段添加大小属性（xs, xl）（E5507 修复）"
       },
       "1.2.5": {
         "en": "Added size attributes (xs, xl) for monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime fields (E5507 fix)",
         "de": "Größenattribute (xs, xl) für monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime Felder hinzugefügt (E5507 Fix)",
-        "ru": "Добавлены атрибуты размеров (xs, xl) для полей monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (исправление E5507)"
+        "ru": "Добавлены атрибуты размеров (xs, xl) для полей monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (исправление E5507)",
+        "pt": "Atributos de tamanho (xs, xl) adicionados para os campos monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (correção E5507)",
+        "nl": "Grootte-attributen (xs, xl) toegevoegd voor monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime velden (E5507 fix)",
+        "fr": "Attributs de taille (xs, xl) ajoutés pour les champs monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (correction E5507)",
+        "it": "Aggiunti attributi di dimensione (xs, xl) per i campi monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (correzione E5507)",
+        "es": "Atributos de tamaño (xs, xl) agregados para los campos monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (corrección E5507)",
+        "pl": "Dodano atrybuty rozmiaru (xs, xl) dla pól monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (poprawka E5507)",
+        "uk": "Додано атрибути розміру (xs, xl) для полів monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (виправлення E5507)",
+        "zh-cn": "已为 monthlyStatsEnabled、minIntervalIntermediate、statsDayTime、statsWeekDay、statsWeekTime 字段添加大小属性（xs, xl）（E5507 修复）"
       },
       "1.2.4": {
         "en": "Added LICENSE file and fixed copyright formatting (W6009/W6011/W7004 fixes)",
         "de": "LICENSE-Datei hinzugefügt und Copyright-Formatierung korrigiert (W6009/W6011/W7004 Fixes)",
-        "ru": "Добавлен файл LICENSE и исправлено форматирование авторских прав (исправления W6009/W6011/W7004)"
+        "ru": "Добавлен файл LICENSE и исправлено форматирование авторских прав (исправления W6009/W6011/W7004)",
+        "pt": "Arquivo LICENSE adicionado e formatação de copyright corrigida (correções W6009/W6011/W7004)",
+        "nl": "LICENSE-bestand toegevoegd en copyright-opmaak hersteld (W6009/W6011/W7007 fixes)",
+        "fr": "Fichier LICENSE ajouté et formatage des droits d'auteur corrigé (corrections W6009/W6011/W7004)",
+        "it": "Aggiunto file LICENSE e corretta formattazione del copyright (correzioni W6009/W6011/W7004)",
+        "es": "Archivo LICENSE agregado y formato de derechos de autor corregido (correcciones W6009/W6011/W7004)",
+        "pl": "Dodano plik LICENSE i poprawiono formatowanie praw autorskich (poprawki W6009/W6011/W7004)",
+        "uk": "Додано файл LICENSE та виправлено форматування авторських прав (виправлення W6009/W6011/W7004)",
+        "zh-cn": "已添加 LICENSE 文件并修复版权格式（W6009/W6011/W7004 修复）"
       },
       "1.2.3": {
         "en": "Added size attributes (xs, xl) for minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd fields in admin UI (E5507 fix)",
         "de": "Größenattribute (xs, xl) für minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd Felder im Admin-UI hinzugefügt (E5507 Fix)",
-        "ru": "Добавлены атрибуты размеров (xs, xl) для полей minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd в админ-интерфейсе (исправление E5507)"
+        "ru": "Добавлены атрибуты размеров (xs, xl) для полей minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd в админ-интерфейсе (исправление E5507)",
+        "pt": "Atributos de tamanho (xs, xl) adicionados para os campos minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd na interface de administração (correção E5507)",
+        "nl": "Grootte-attributen (xs, xl) toegevoegd voor minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd velden in admin UI (E5507 fix)",
+        "fr": "Attributs de taille (xs, xl) ajoutés pour les champs minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd dans l'interface d'administration (correction E5507)",
+        "it": "Aggiunti attributi di dimensione (xs, xl) per i campi minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd nell'interfaccia di amministrazione (correzione E5507)",
+        "es": "Atributos de tamaño (xs, xl) agregados para los campos minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd en la interfaz de administración (corrección E5507)",
+        "pl": "Dodano atrybuty rozmiaru (xs, xl) dla pól minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd w interfejsie administracyjnym (poprawka E5507)",
+        "uk": "Додано атрибути розміру (xs, xl) для полів minIntervalFull, minIntervalEmpty, intermediateSteps, quietModeStart, quietModeEnd в адмін-інтерфейсі (виправлення E5507)",
+        "zh-cn": "已为管理界面中的 minIntervalFull、minIntervalEmpty、intermediateSteps、quietModeStart、quietModeEnd 字段添加大小属性（xs, xl）（E5507 修复）"
       },
       "1.2.2": {
         "en": "Fixed weekly statistics: Now uses weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower fields instead of daily values",
         "de": "Wochenstatistik fixiert: Verwendet jetzt weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower Felder statt Tageswerten",
-        "ru": "Исправлена недельная статистика: теперь используются поля weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower вместо дневных значений"
-      },
-      "1.2.1": {
-        "en": "Added size attributes (xs, xl) for night mode and quiet mode fields in admin UI",
-        "de": "Größenattribute (xs, xl) für Nachtmodus und Ruhemodus-Felder im Admin-UI hinzugefügt",
-        "ru": "Добавлены атрибуты размеров (xs, xl) для полей ночного режима и тихого режима в админ-интерфейсе"
-      },
-      "1.2.0": {
-        "en": "Added common.news section for repository checker (E136 fix)",
-        "de": "common.news Sektion für Repository Checker hinzugefügt (E136 Fix)",
-        "ru": "Добавлен раздел common.news для проверки репозитория (исправление E136)"
-      },
-      "1.1.9": {
-        "en": "Weather today added to battery full (100%) and empty (0%) messages",
-        "de": "Wetter heute zu Batterie VOLL (100%) und LEER (0%) Nachrichten hinzugefügt",
-        "ru": "Погода сегодня добавлена в сообщения о полной (100%) и пустой (0%) батарее"
-      },
-      "1.1.8": {
-        "en": "Weather today added to intermediate messages",
-        "de": "Wetter heute zu Intermediate-Nachrichten hinzugefügt",
-        "ru": "Погода сегодня добавлена в промежуточные сообщения"
-      },
-      "1.1.7": {
-        "en": "Weather data null-check fix to prevent errors",
-        "de": "Wetterdaten null-check Fix um Fehler zu vermeiden",
-        "ru": "Исправлена проверка null для данных о погоде"
+        "ru": "Исправлена недельная статистика: теперь используются поля weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower вместо дневных значений",
+        "pt": "Estatísticas semanais corrigidas: Agora usa os campos weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower em vez de valores diários",
+        "nl": "Wekelijkse statistieken hersteld: Gebruikt nu weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower velden in plaats van dagwaarden",
+        "fr": "Statistiques hebdomadaires corrigées : Utilise maintenant les champs weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower au lieu des valeurs quotidiennes",
+        "it": "Statistiche settimanali corrette: Ora utilizza i campi weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower invece dei valori giornalieri",
+        "es": "Estadísticas semanales corregidas: Ahora usa los campos weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower en lugar de valores diarios",
+        "pl": "Naprawiono statystyki tygodniowe: Teraz używa pól weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower zamiast wartości dziennych",
+        "uk": "Виправлено тижневу статистику: Тепер використовуються поля weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower замість денних значень",
+        "zh-cn": "已修复周统计：现在使用 weeklyProduction/weeklyConsumption/weeklyFeedIn/weeklyGridPower 字段而不是日值"
       }
     },
     "authors": [
@@ -122,74 +158,7 @@
       {
         "admin": ">=7.6.20"
       }
-    ],
-    "news": {
-      "1.0.93": {
-        "en": "Repository checker fixes: size attributes added for number fields (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), VSCode schema definitions updated",
-        "de": "Repository-Checker-Fixes: size-Attribute für number-Felder hinzugefügt (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), VSCode-Schema-Definitionen aktualisiert",
-        "ru": "Исправления репозитория: добавлены атрибуты size для числовых полей (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), обновлены определения схемы VSCode",
-        "pt": "Correções do repositório: atributos size adicionados para campos numéricos (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), definições de esquema VSCode atualizadas",
-        "nl": "Repository checker fixes: size-attributen toegevoegd voor nummervelden (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), VSCode-schema-definities bijgewerkt",
-        "fr": "Corrections du dépôt : attributs size ajoutés pour les champs numériques (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), définitions de schéma VSCode mises à jour",
-        "it": "Correzioni del repository: aggiunti attributi size per i campi numerici (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), aggiornate definizioni di schema VSCode",
-        "es": "Correcciones del repositorio: atributos size agregados para campos numéricos (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), definiciones de esquema VSCode actualizadas",
-        "pl": "Poprawki repozytorium: dodano atrybuty size dla pól liczbowych (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), zaktualizowano definicje schematu VSCode",
-        "uk": "Виправлення репозиторію: додано атрибути size для числових полів (batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty), оновлено визначення схеми VSCode",
-        "zh-cn": "仓库修复：已为数字字段添加 size 属性（batteryCapacityWh, thresholdFull/Empty/ResetFull/ResetEmpty），已更新 VSCode 架构定义"
-      },
-      "1.0.92": {
-        "en": "VSCode settings added with JSON schema definitions for better development experience",
-        "de": "VSCode-Einstellungen mit JSON-Schema-Definitionen für bessere Entwicklungserfahrung hinzugefügt",
-        "ru": "Добавлены настройки VSCode с определениями JSON-схемы для улучшения разработки",
-        "pt": "Configurações do VSCode adicionadas com definições de esquema JSON para melhor experiência de desenvolvimento",
-        "nl": "VSCode-instellingen toegevoegd met JSON-schema-definities voor betere ontwikkelervaring",
-        "fr": "Paramètres VSCode ajoutés avec des définitions de schéma JSON pour une meilleure expérience de développement",
-        "it": "Aggiunte impostazioni VSCode con definizioni di schema JSON per una migliore esperienza di sviluppo",
-        "es": "Configuraciones de VSCode agregadas con definiciones de esquema JSON para mejor experiencia de desarrollo",
-        "pl": "Dodano ustawienia VSCode z definicjami schematu JSON dla lepszego doświadczenia programistycznego",
-        "uk": "Додано налаштування VSCode з визначеннями JSON-схеми для покращення розробки",
-        "zh-cn": "已添加 VSCode 设置与 JSON 架构定义，以提升开发体验"
-      },
-      "1.0.91": {
-        "en": "Repository checker fixes: old news removed, size attributes added for all objectId fields, .commitinfo added to .gitignore",
-        "de": "Repository-Checker-Fixes: alte News entfernt, size-Attribute für alle objectId-Felder hinzugefügt, .commitinfo zu .gitignore hinzugefügt",
-        "ru": "Исправления репозитория: старые новости удалены, добавлены атрибуты size для всех полей objectId, .commitinfo добавлен в .gitignore",
-        "pt": "Correções do repositório: notícias antigas removidas, atributos size adicionados para todos os campos objectId, .commitinfo adicionado ao .gitignore",
-        "nl": "Repository checker fixes: oude nieuwsberichten verwijderd, size-attributen toegevoegd voor alle objectId-velden, .commitinfo toegevoegd aan .gitignore",
-        "fr": "Corrections du dépôt : anciennes nouvelles supprimées, attributs size ajoutés pour tous les champs objectId, .commitinfo ajouté à .gitignore",
-        "it": "Correzioni del repository: vecchie notizie rimosse, aggiunti attributi size per tutti i campi objectId, .commitinfo aggiunto a .gitignore",
-        "es": "Correcciones del repositorio: noticias antiguas eliminadas, atributos size agregados para todos los campos objectId, .commitinfo agregado a .gitignore",
-        "pl": "Poprawki repozytorium: usunięto stare wiadomości, dodano atrybuty size dla wszystkich pól objectId, dodano .commitinfo do .gitignore",
-        "uk": "Виправлення репозиторію: старі новини видалено, додано атрибути size для всіх полів objectId, .commitinfo додано до .gitignore",
-        "zh-cn": "仓库修复：旧新闻已删除，已为所有 objectId 字段添加 size 属性，.commitinfo 已添加到 .gitignore"
-      },
-      "1.0.90": {
-        "en": "JSDoc parameter descriptions added for all functions",
-        "de": "JSDoc-Parameterbeschreibungen für alle Funktionen hinzugefügt",
-        "ru": "Добавлены описания параметров JSDoc для всех функций",
-        "pt": "Descrições de parâmetros JSDoc adicionadas para todas as funções",
-        "nl": "JSDoc-parameterbeschrijvingen toegevoegd voor alle functies",
-        "fr": "Descriptions de paramètres JSDoc ajoutées pour toutes les fonctions",
-        "it": "Aggiunte descrizioni parametri JSDoc per tutte le funzioni",
-        "es": "Descripciones de parámetros JSDoc agregadas para todas las funciones",
-        "pl": "Dodano opisy parametrów JSDoc dla wszystkich funkcji",
-        "uk": "Додано описи параметрів JSDoc для всіх функцій",
-        "zh-cn": "已为所有函数添加 JSDoc 参数描述"
-      },
-      "1.0.89": {
-        "en": "Repository checker fixes: createState replaced with setObjectNotExists, size attributes added to jsonConfig, dependencies updated, translations added for all languages",
-        "de": "Repository-Checker-Fixes: createState durch setObjectNotExists ersetzt, size-Attribute zu jsonConfig hinzugefügt, Abhängigkeiten aktualisiert, Übersetzungen für alle Sprachen hinzugefügt",
-        "ru": "Исправления репозитория: createState заменен на setObjectNotExists, добавлены атрибуты size в jsonConfig, обновлены зависимости, добавлены переводы для всех языков",
-        "pt": "Correções do verificador de repositório: createState substituído por setObjectNotExists, atributos size adicionados ao jsonConfig, dependências atualizadas, traduções adicionadas para todos os idiomas",
-        "nl": "Repository checker fixes: createState vervangen door setObjectNotExists, size-attributen toegevoegd aan jsonConfig, afhankelijkheden bijgewerkt, vertalingen toegevoegd voor alle talen",
-        "fr": "Corrections du vérificateur de dépôt : createState remplacé par setObjectNotExists, attributs size ajoutés à jsonConfig, dépendances mises à jour, traductions ajoutées pour toutes les langues",
-        "it": "Correzioni del repository checker: createState sostituito con setObjectNotExists, aggiunti attributi size a jsonConfig, dipendenze aggiornate, aggiunte traduzioni per tutte le lingue",
-        "es": "Correcciones del verificador de repositorio: createState reemplazado por setObjectNotExists, atributos size agregados a jsonConfig, dependencias actualizadas, traducciones agregadas para todos los idiomas",
-        "pl": "Poprawki checkera repozytorium: createState zastąpiono przez setObjectNotExists, dodano atrybuty size do jsonConfig, zaktualizowano zależności, dodano tłumaczenia dla wszystkich języków",
-        "uk": "Виправлення перевірки репозиторію: createState замінено на setObjectNotExists, додано атрибути size до jsonConfig, оновлено залежності, додано переклади для всіх мов",
-        "zh-cn": "仓库检查器修复：createState 已替换为 setObjectNotExists，size 属性已添加到 jsonConfig，已更新依赖，已添加所有语言的翻译"
-      }
-    }
+    ]
   },
   "native": {
     "telegramInstance": "telegram.0",
