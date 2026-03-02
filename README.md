@@ -344,6 +344,10 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.5 (2026-03-02)
+
+* (FIX) Added size attributes (xs, xl) for monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime fields (E5507 fix)
+
 ### 1.2.4 (2026-03-02)
 
 * (FIX) Added LICENSE file (E190 fix)
