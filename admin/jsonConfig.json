@@ -429,9 +429,11 @@
     "monthlyStatsDay": {
       "type": "number",
       "label": "label_monthlyStatsDay",
+      "xs": 12,
       "sm": 3,
       "md": 3,
       "lg": 3,
+      "xl": 3,
       "min": 1,
       "max": 31,
       "default": 1,
@@ -440,9 +442,11 @@
     "monthlyStatsTime": {
       "type": "text",
       "label": "label_monthlyStatsTime",
+      "xs": 12,
       "sm": 3,
       "md": 3,
       "lg": 3,
+      "xl": 3,
       "default": "09:00",
       "tooltip": "tooltip_monthlyStatsTime"
     },
@@ -457,18 +461,22 @@
     "weatherEnabled": {
       "type": "checkbox",
       "label": "label_weatherEnabled",
+      "xs": 12,
       "sm": 12,
       "md": 12,
       "lg": 12,
+      "xl": 12,
       "default": true,
       "tooltip": "tooltip_weatherEnabled"
     },
     "weatherInIntermediate": {
       "type": "checkbox",
       "label": "label_weatherInIntermediate",
+      "xs": 12,
       "sm": 6,
       "md": 6,
       "lg": 6,
+      "xl": 6,
       "default": true,
       "tooltip": "tooltip_weatherInIntermediate",
       "disabled": "!weatherEnabled"
@@ -476,9 +484,11 @@
     "weatherInDailyStats": {
       "type": "checkbox",
       "label": "label_weatherInDailyStats",
+      "xs": 12,
       "sm": 6,
       "md": 6,
       "lg": 6,
+      "xl": 6,
       "default": true,
       "tooltip": "tooltip_weatherInDailyStats",
       "disabled": "!weatherEnabled"
@@ -534,16 +544,20 @@
     "highProduction": {
       "type": "number",
       "label": "label_highProduction",
+      "xs": 12,
       "sm": 6,
       "md": 6,
-      "lg": 6
+      "lg": 6,
+      "xl": 6
     },
     "highConsumption": {
       "type": "number",
       "label": "label_highConsumption",
+      "xs": 12,
       "sm": 6,
       "md": 6,
-      "lg": 6
+      "lg": 6,
+      "xl": 6
     }
   }
 }
