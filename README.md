@@ -344,11 +344,13 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.11 (2026-03-02)
+
+* (FIX) Daily statistics: Self-consumption cannot be negative (Math.max(0, totalProd - feedIn))
+* (FIX) Daily statistics: Added weather today to message (in addition to weather tomorrow)
+* (FIX) Weather error logging improved (warn instead of debug for better visibility)
+
 ### 1.2.10 (2026-03-02)
-
-* (FIX) Fixed W4040/W4042: Updated schema definitions in .vscode/settings.json
-
-### 1.2.9 (2026-03-02)
 
 * (FIX) Fixed duplicate news entry in io-package.json (E1036/E2005 fix)
 * (FIX) Added full translations for common.news (pt, nl, fr, it, es, pl, uk, zh-cn)

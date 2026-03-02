@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.10",
+    "version": "1.2.11",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,19 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.11": {
+        "en": "Fixed daily statistics: self-consumption cannot be negative (Math.max), added weather today to daily stats message",
+        "de": "Tagesstatistik fixiert: Eigenverbrauch kann nicht negativ sein (Math.max), Wetter heute zur Tagesstatistik hinzugefügt",
+        "ru": "Исправлена дневная статистика: собственное потребление не может быть отрицательным (Math.max), добавлена погода сегодня в дневную статистику",
+        "pt": "Estatísticas diárias corrigidas: autoconsumo não pode ser negativo (Math.max), adicionado clima de hoje às estatísticas diárias",
+        "nl": "Dagelijkse statistieken hersteld: eigen verbruik kan niet negatief zijn (Math.max), weer vandaag toegevoegd aan dagelijkse statistieken",
+        "fr": "Statistiques quotidiennes corrigées : l'autoconsommation ne peut pas être négative (Math.max), météo d'aujourd'hui ajoutée aux statistiques quotidiennes",
+        "it": "Statistiche giornaliere corrette: l'autoconsumo non può essere negativo (Math.max), aggiunto meteo di oggi alle statistiche giornaliere",
+        "es": "Estadísticas diarias corregidas: el autoconsumo no puede ser negativo (Math.max), agregado clima de hoy a las estadísticas diarias",
+        "pl": "Naprawiono statystyki dzienne: zużycie własne nie może być ujemne (Math.max), dodano pogodę dzisiaj do statystyk dziennych",
+        "uk": "Виправлено денну статистику: власне споживання не може бути від'ємним (Math.max), додано погоду сьогодні до денної статистики",
+        "zh-cn": "已修复每日统计：自用电量不能为负数（Math.max），已添加今日天气到每日统计"
+      },
       "1.2.10": {
         "en": "Fixed W4040/W4042: Updated schema definitions in .vscode/settings.json (fileMatch without leading slashes, URLs with /master/)",
         "de": "W4040/W4042 behoben: Schema-Definitionen in .vscode/settings.json aktualisiert (fileMatch ohne führende Slashes, URLs mit /master/)",
@@ -106,19 +119,6 @@
         "pl": "Dodano atrybuty rozmiaru (xs, xl) dla pól monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (poprawka E5507)",
         "uk": "Додано атрибути розміру (xs, xl) для полів monthlyStatsEnabled, minIntervalIntermediate, statsDayTime, statsWeekDay, statsWeekTime (виправлення E5507)",
         "zh-cn": "已为 monthlyStatsEnabled、minIntervalIntermediate、statsDayTime、statsWeekDay、statsWeekTime 字段添加大小属性（xs, xl）（E5507 修复）"
-      },
-      "1.2.4": {
-        "en": "Added LICENSE file and fixed copyright formatting (W6009/W6011/W7004 fixes)",
-        "de": "LICENSE-Datei hinzugefügt und Copyright-Formatierung korrigiert (W6009/W6011/W7004 Fixes)",
-        "ru": "Добавлен файл LICENSE и исправлено форматирование авторских прав (исправления W6009/W6011/W7004)",
-        "pt": "Arquivo LICENSE adicionado e formatação de copyright corrigida (correções W6009/W6011/W7004)",
-        "nl": "LICENSE-bestand toegevoegd en copyright-opmaak hersteld (W6009/W6011/W7007 fixes)",
-        "fr": "Fichier LICENSE ajouté et formatage des droits d'auteur corrigé (corrections W6009/W6011/W7004)",
-        "it": "Aggiunto file LICENSE e corretta formattazione del copyright (correzioni W6009/W6011/W7004)",
-        "es": "Archivo LICENSE agregado y formato de derechos de autor corregido (correcciones W6009/W6011/W7004)",
-        "pl": "Dodano plik LICENSE i poprawiono formatowanie praw autorskich (poprawki W6009/W6011/W7004)",
-        "uk": "Додано файл LICENSE та виправлено форматування авторських прав (виправлення W6009/W6011/W7004)",
-        "zh-cn": "已添加 LICENSE 文件并修复版权格式（W6009/W6011/W7004 修复）"
       }
     },
     "authors": [

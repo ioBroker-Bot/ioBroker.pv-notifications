@@ -1205,8 +1205,8 @@ ${statusText}`;
         const gridPowerState = await this.getStateAsync('statistics.currentGridPower');
         const gridPower = gridPowerState && gridPowerState.val !== null ? this.round(gridPowerState.val, 0) : 0;
 
-        // Eigenverbrauch berechnen
-        const selfConsumption = this.round(totalProd - feedIn, 1);
+        // Eigenverbrauch berechnen (kann nicht negativ sein)
+        const selfConsumption = this.round(Math.max(0, totalProd - feedIn), 1);
         const selfConsumptionRate = totalProd > 0 ? this.round((selfConsumption / totalProd) * 100, 1) : 0;
 
         let message = `📊 *${this.translate('Daily statistics PV system')}*
@@ -1219,40 +1219,93 @@ ${statusText}`;
 🔌 ${this.translate('Feed-in')}: ${feedIn} kWh
 ⚡ ${this.translate('Grid consumption')}: ${gridPower} kWh`;
 
-        // Wetter-Prognose für morgen hinzufügen (optional, nur wenn weatherInDailyStats aktiv)
+        // Wetter-Prognose für heute und morgen hinzufügen (optional, nur wenn weatherInDailyStats aktiv)
+        const weatherTodayConfigured = this.config.weatherTodayText || this.config.weatherTodayTemp;
+        const weatherTomorrowConfigured = this.config.weatherTomorrowText || this.config.weatherTomorrow;
+
         if (
             this.config.weatherEnabled !== false &&
             this.config.weatherInDailyStats !== false &&
-            (this.config.weatherTomorrowText || this.config.weatherTomorrow)
+            (weatherTodayConfigured || weatherTomorrowConfigured)
         ) {
             try {
-                const weatherTomorrowTextState = await this.getForeignStateAsync(this.config.weatherTomorrowText);
-                const weatherTomorrowState = await this.getForeignStateAsync(this.config.weatherTomorrow);
-                const tempTomorrowState = await this.getForeignStateAsync(this.config.weatherTomorrowTemp);
+                let weatherAdded = false;
 
-                const weatherTomorrowText =
-                    weatherTomorrowTextState && weatherTomorrowTextState.val !== null
-                        ? weatherTomorrowTextState.val
+                // Wetter heute lesen
+                if (weatherTodayConfigured) {
+                    const weatherTodayTextState = this.config.weatherTodayText
+                        ? await this.getForeignStateAsync(this.config.weatherTodayText)
                         : null;
-                const weatherTomorrow =
-                    weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
-                const tempTomorrow = tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
-                const tempText = tempTomorrow ? ` ${this.round(tempTomorrow, 1)}°C` : '';
+                    const weatherTodayTempState = this.config.weatherTodayTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTodayTemp)
+                        : null;
 
-                const weatherText = weatherTomorrowText || weatherTomorrow;
-                if (weatherText) {
-                    const weatherDesc = this.getWeatherDescription(weatherText);
-                    message += `\n━━━━━━━━━━━━━━━━━━━━━━\n🌤️ *${this.translate('Weather tomorrow')}:* ${weatherDesc}${tempText}`;
+                    const weatherTodayText =
+                        weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
+                    const weatherTodayTemp =
+                        weatherTodayTempState && weatherTodayTempState.val !== null ? weatherTodayTempState.val : null;
+                    const todayTempText = weatherTodayTemp ? ` ${this.round(weatherTodayTemp, 1)}°C` : '';
 
-                    // Zusätzliche Info bei gutem/schlechtem Wetter
-                    if (this.isWeatherGood(weatherText)) {
-                        message += `\n☀️ ${this.translate('Good PV production expected')}`;
-                    } else if (this.isWeatherBad(weatherText)) {
-                        message += `\n⛅ ${this.translate('Less PV production expected')}`;
+                    if (weatherTodayText || weatherTodayTemp) {
+                        const weatherDesc = weatherTodayText ? this.getWeatherDescription(weatherTodayText) : '🌡️';
+                        message += `\n━━━━━━━━━━━━━━━━━━━━━━\n🌤️ *${this.translate('Weather today')}:* ${weatherDesc}${todayTempText}`;
+                        weatherAdded = true;
                     }
                 }
+
+                // Wetter morgen lesen
+                if (weatherTomorrowConfigured) {
+                    const weatherTomorrowTextState = this.config.weatherTomorrowText
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrowText)
+                        : null;
+                    const weatherTomorrowState = this.config.weatherTomorrow
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrow)
+                        : null;
+                    const tempTomorrowState = this.config.weatherTomorrowTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrowTemp)
+                        : null;
+
+                    const weatherTomorrowText =
+                        weatherTomorrowTextState && weatherTomorrowTextState.val !== null
+                            ? weatherTomorrowTextState.val
+                            : null;
+                    const weatherTomorrow =
+                        weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
+                    const tempTomorrow =
+                        tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
+                    const tempText = tempTomorrow ? ` ${this.round(tempTomorrow, 1)}°C` : '';
+
+                    const weatherText = weatherTomorrowText || weatherTomorrow;
+                    if (weatherText) {
+                        const weatherDesc = this.getWeatherDescription(weatherText);
+                        message += `\n🌤️ *${this.translate('Weather tomorrow')}:* ${weatherDesc}${tempText}`;
+                        weatherAdded = true;
+
+                        // Zusätzliche Info bei gutem/schlechtem Wetter
+                        if (this.isWeatherGood(weatherText)) {
+                            message += `\n☀️ ${this.translate('Good PV production expected')}`;
+                        } else if (this.isWeatherBad(weatherText)) {
+                            message += `\n⛅ ${this.translate('Less PV production expected')}`;
+                        }
+                    }
+                }
+
+                if (weatherAdded) {
+                    message += `\n`;
+                }
             } catch (e) {
-                this.log.debug(`Weather data for tomorrow not available: ${e.message}`);
+                this.log.warn(`Weather data error in daily stats: ${e.message}`);
+                this.log.warn(`Please check weather configuration in adapter settings`);
+            }
+        } else {
+            if (this.config.weatherEnabled === false) {
+                this.log.debug('Weather disabled (weatherEnabled=false)');
+            }
+            if (this.config.weatherInDailyStats === false) {
+                this.log.debug('Weather in daily stats disabled (weatherInDailyStats=false)');
+            }
+            if (!weatherTodayConfigured && !weatherTomorrowConfigured) {
+                this.log.debug('No weather data points configured for daily stats');
             }
         }
 
