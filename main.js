@@ -91,12 +91,16 @@ class PvNotifications extends utils.Adapter {
         this.log.info('PV Notifications Adapter started');
 
         // Migration: Set weather checkboxes to true if not set (for updates from < v1.1.3)
-        if (this.config.weatherEnabled === true && 
-            (this.config.weatherInIntermediate === undefined || this.config.weatherInIntermediate === null)) {
+        if (
+            this.config.weatherEnabled === true &&
+            (this.config.weatherInIntermediate === undefined || this.config.weatherInIntermediate === null)
+        ) {
             this.log.info('Migration: Setting weatherInIntermediate to true (default)');
         }
-        if (this.config.weatherEnabled === true && 
-            (this.config.weatherInDailyStats === undefined || this.config.weatherInDailyStats === null)) {
+        if (
+            this.config.weatherEnabled === true &&
+            (this.config.weatherInDailyStats === undefined || this.config.weatherInDailyStats === null)
+        ) {
             this.log.info('Migration: Setting weatherInDailyStats to true (default)');
         }
 
@@ -433,12 +437,17 @@ class PvNotifications extends utils.Adapter {
             const lastWeekFullCycles = await this.getStateAsync('statistics.lastWeekFullCycles');
             const lastWeekEmptyCycles = await this.getStateAsync('statistics.lastWeekEmptyCycles');
 
-            this.stats.lastWeekProduction = lastWeekProduction && lastWeekProduction.val !== null ? lastWeekProduction.val : 0;
-            this.stats.lastWeekConsumption = lastWeekConsumption && lastWeekConsumption.val !== null ? lastWeekConsumption.val : 0;
+            this.stats.lastWeekProduction =
+                lastWeekProduction && lastWeekProduction.val !== null ? lastWeekProduction.val : 0;
+            this.stats.lastWeekConsumption =
+                lastWeekConsumption && lastWeekConsumption.val !== null ? lastWeekConsumption.val : 0;
             this.stats.lastWeekFeedIn = lastWeekFeedIn && lastWeekFeedIn.val !== null ? lastWeekFeedIn.val : 0;
-            this.stats.lastWeekGridPower = lastWeekGridPower && lastWeekGridPower.val !== null ? lastWeekGridPower.val : 0;
-            this.stats.lastWeekFullCycles = lastWeekFullCycles && lastWeekFullCycles.val !== null ? lastWeekFullCycles.val : 0;
-            this.stats.lastWeekEmptyCycles = lastWeekEmptyCycles && lastWeekEmptyCycles.val !== null ? lastWeekEmptyCycles.val : 0;
+            this.stats.lastWeekGridPower =
+                lastWeekGridPower && lastWeekGridPower.val !== null ? lastWeekGridPower.val : 0;
+            this.stats.lastWeekFullCycles =
+                lastWeekFullCycles && lastWeekFullCycles.val !== null ? lastWeekFullCycles.val : 0;
+            this.stats.lastWeekEmptyCycles =
+                lastWeekEmptyCycles && lastWeekEmptyCycles.val !== null ? lastWeekEmptyCycles.val : 0;
 
             // Load saved last month data from states
             const lastMonthProduction = await this.getStateAsync('statistics.lastMonthProduction');
@@ -448,12 +457,17 @@ class PvNotifications extends utils.Adapter {
             const lastMonthFullCycles = await this.getStateAsync('statistics.lastMonthFullCycles');
             const lastMonthEmptyCycles = await this.getStateAsync('statistics.lastMonthEmptyCycles');
 
-            this.stats.lastMonthProduction = lastMonthProduction && lastMonthProduction.val !== null ? lastMonthProduction.val : 0;
-            this.stats.lastMonthConsumption = lastMonthConsumption && lastMonthConsumption.val !== null ? lastMonthConsumption.val : 0;
+            this.stats.lastMonthProduction =
+                lastMonthProduction && lastMonthProduction.val !== null ? lastMonthProduction.val : 0;
+            this.stats.lastMonthConsumption =
+                lastMonthConsumption && lastMonthConsumption.val !== null ? lastMonthConsumption.val : 0;
             this.stats.lastMonthFeedIn = lastMonthFeedIn && lastMonthFeedIn.val !== null ? lastMonthFeedIn.val : 0;
-            this.stats.lastMonthGridPower = lastMonthGridPower && lastMonthGridPower.val !== null ? lastMonthGridPower.val : 0;
-            this.stats.lastMonthFullCycles = lastMonthFullCycles && lastMonthFullCycles.val !== null ? lastMonthFullCycles.val : 0;
-            this.stats.lastMonthEmptyCycles = lastMonthEmptyCycles && lastMonthEmptyCycles.val !== null ? lastMonthEmptyCycles.val : 0;
+            this.stats.lastMonthGridPower =
+                lastMonthGridPower && lastMonthGridPower.val !== null ? lastMonthGridPower.val : 0;
+            this.stats.lastMonthFullCycles =
+                lastMonthFullCycles && lastMonthFullCycles.val !== null ? lastMonthFullCycles.val : 0;
+            this.stats.lastMonthEmptyCycles =
+                lastMonthEmptyCycles && lastMonthEmptyCycles.val !== null ? lastMonthEmptyCycles.val : 0;
 
             this.log.info('Statistics loaded from states');
         } catch (e) {
@@ -882,35 +896,56 @@ class PvNotifications extends utils.Adapter {
 🔌 ${this.translate('Feed-in today')}: ${this.round(Math.abs(feedIn), 0)} kWh`;
 
         // Wetter-Prognose hinzufügen (heute und morgen)
-        const weatherConfigured = this.config.weatherTodayText || this.config.weatherTodayTemp || this.config.weatherTomorrowText || this.config.weatherTomorrow;
+        const weatherConfigured =
+            this.config.weatherTodayText ||
+            this.config.weatherTodayTemp ||
+            this.config.weatherTomorrowText ||
+            this.config.weatherTomorrow;
         if (this.config.weatherEnabled !== false && weatherConfigured) {
             try {
                 // Wetter heute
                 if (this.config.weatherTodayText || this.config.weatherTodayTemp) {
-                    const weatherTodayTextState = this.config.weatherTodayText ? await this.getForeignStateAsync(this.config.weatherTodayText) : null;
-                    const weatherTodayTempState = this.config.weatherTodayTemp ? await this.getForeignStateAsync(this.config.weatherTodayTemp) : null;
-                    
-                    const weatherTodayText = weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
-                    const weatherTodayTemp = weatherTodayTempState && weatherTodayTempState.val !== null ? weatherTodayTempState.val : null;
+                    const weatherTodayTextState = this.config.weatherTodayText
+                        ? await this.getForeignStateAsync(this.config.weatherTodayText)
+                        : null;
+                    const weatherTodayTempState = this.config.weatherTodayTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTodayTemp)
+                        : null;
+
+                    const weatherTodayText =
+                        weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
+                    const weatherTodayTemp =
+                        weatherTodayTempState && weatherTodayTempState.val !== null ? weatherTodayTempState.val : null;
                     const todayTempText = weatherTodayTemp ? ` ${this.round(weatherTodayTemp, 1)}°C` : '';
-                    
+
                     if (weatherTodayText || weatherTodayTemp) {
                         const weatherDesc = weatherTodayText ? this.getWeatherDescription(weatherTodayText) : '🌡️';
                         message += `\n🌤️ Heute: ${weatherDesc}${todayTempText}`;
                     }
                 }
-                
+
                 // Wetter morgen
                 if (this.config.weatherTomorrowText || this.config.weatherTomorrow) {
-                    const weatherTomorrowTextState = this.config.weatherTomorrowText ? await this.getForeignStateAsync(this.config.weatherTomorrowText) : null;
-                    const weatherTomorrowState = this.config.weatherTomorrow ? await this.getForeignStateAsync(this.config.weatherTomorrow) : null;
-                    const tempTomorrowState = this.config.weatherTomorrowTemp ? await this.getForeignStateAsync(this.config.weatherTomorrowTemp) : null;
-                    
-                    const weatherTomorrowText = weatherTomorrowTextState && weatherTomorrowTextState.val !== null ? weatherTomorrowTextState.val : null;
-                    const weatherTomorrow = weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
-                    const tempTomorrow = tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
+                    const weatherTomorrowTextState = this.config.weatherTomorrowText
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrowText)
+                        : null;
+                    const weatherTomorrowState = this.config.weatherTomorrow
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrow)
+                        : null;
+                    const tempTomorrowState = this.config.weatherTomorrowTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrowTemp)
+                        : null;
+
+                    const weatherTomorrowText =
+                        weatherTomorrowTextState && weatherTomorrowTextState.val !== null
+                            ? weatherTomorrowTextState.val
+                            : null;
+                    const weatherTomorrow =
+                        weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
+                    const tempTomorrow =
+                        tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
                     const tempText = tempTomorrow ? ` ${this.round(tempTomorrow, 1)}°C` : '';
-                    
+
                     const weatherText = weatherTomorrowText || weatherTomorrow;
                     if (weatherText) {
                         const weatherDesc = this.getWeatherDescription(weatherText);
@@ -953,35 +988,56 @@ class PvNotifications extends utils.Adapter {
 🏠 ${this.translate('Consumption today')}: ${this.round(consumption)} W`;
 
         // Wetter-Prognose hinzufügen (heute und morgen)
-        const weatherConfigured = this.config.weatherTodayText || this.config.weatherTodayTemp || this.config.weatherTomorrowText || this.config.weatherTomorrow;
+        const weatherConfigured =
+            this.config.weatherTodayText ||
+            this.config.weatherTodayTemp ||
+            this.config.weatherTomorrowText ||
+            this.config.weatherTomorrow;
         if (this.config.weatherEnabled !== false && weatherConfigured) {
             try {
                 // Wetter heute
                 if (this.config.weatherTodayText || this.config.weatherTodayTemp) {
-                    const weatherTodayTextState = this.config.weatherTodayText ? await this.getForeignStateAsync(this.config.weatherTodayText) : null;
-                    const weatherTodayTempState = this.config.weatherTodayTemp ? await this.getForeignStateAsync(this.config.weatherTodayTemp) : null;
-                    
-                    const weatherTodayText = weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
-                    const weatherTodayTemp = weatherTodayTempState && weatherTodayTempState.val !== null ? weatherTodayTempState.val : null;
+                    const weatherTodayTextState = this.config.weatherTodayText
+                        ? await this.getForeignStateAsync(this.config.weatherTodayText)
+                        : null;
+                    const weatherTodayTempState = this.config.weatherTodayTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTodayTemp)
+                        : null;
+
+                    const weatherTodayText =
+                        weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
+                    const weatherTodayTemp =
+                        weatherTodayTempState && weatherTodayTempState.val !== null ? weatherTodayTempState.val : null;
                     const todayTempText = weatherTodayTemp ? ` ${this.round(weatherTodayTemp, 1)}°C` : '';
-                    
+
                     if (weatherTodayText || weatherTodayTemp) {
                         const weatherDesc = weatherTodayText ? this.getWeatherDescription(weatherTodayText) : '🌡️';
                         message += `\n🌤️ Heute: ${weatherDesc}${todayTempText}`;
                     }
                 }
-                
+
                 // Wetter morgen
                 if (this.config.weatherTomorrowText || this.config.weatherTomorrow) {
-                    const weatherTomorrowTextState = this.config.weatherTomorrowText ? await this.getForeignStateAsync(this.config.weatherTomorrowText) : null;
-                    const weatherTomorrowState = this.config.weatherTomorrow ? await this.getForeignStateAsync(this.config.weatherTomorrow) : null;
-                    const tempTomorrowState = this.config.weatherTomorrowTemp ? await this.getForeignStateAsync(this.config.weatherTomorrowTemp) : null;
-                    
-                    const weatherTomorrowText = weatherTomorrowTextState && weatherTomorrowTextState.val !== null ? weatherTomorrowTextState.val : null;
-                    const weatherTomorrow = weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
-                    const tempTomorrow = tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
+                    const weatherTomorrowTextState = this.config.weatherTomorrowText
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrowText)
+                        : null;
+                    const weatherTomorrowState = this.config.weatherTomorrow
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrow)
+                        : null;
+                    const tempTomorrowState = this.config.weatherTomorrowTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrowTemp)
+                        : null;
+
+                    const weatherTomorrowText =
+                        weatherTomorrowTextState && weatherTomorrowTextState.val !== null
+                            ? weatherTomorrowTextState.val
+                            : null;
+                    const weatherTomorrow =
+                        weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
+                    const tempTomorrow =
+                        tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
                     const tempText = tempTomorrow ? ` ${this.round(tempTomorrow, 1)}°C` : '';
-                    
+
                     const weatherText = weatherTomorrowText || weatherTomorrow;
                     if (weatherText) {
                         const weatherDesc = this.getWeatherDescription(weatherText);
@@ -1038,39 +1094,64 @@ class PvNotifications extends utils.Adapter {
 ${statusText}`;
 
         // Wetter-Prognose für morgen hinzufügen (optional, nur wenn weatherInIntermediate aktiv)
-        const weatherConfigured = this.config.weatherTomorrowText || this.config.weatherTomorrow || this.config.weatherTodayText || this.config.weatherTodayTemp;
-        this.log.debug(`Weather config: enabled=${this.config.weatherEnabled}, inIntermediate=${this.config.weatherInIntermediate}, configured=${weatherConfigured}`);
-        this.log.debug(`Weather data points: todayText="${this.config.weatherTodayText}", todayTemp="${this.config.weatherTodayTemp}", tomorrowText="${this.config.weatherTomorrowText}", tomorrow="${this.config.weatherTomorrow}", tomorrowTemp="${this.config.weatherTomorrowTemp}"`);
-        
+        const weatherConfigured =
+            this.config.weatherTomorrowText ||
+            this.config.weatherTomorrow ||
+            this.config.weatherTodayText ||
+            this.config.weatherTodayTemp;
+        this.log.debug(
+            `Weather config: enabled=${this.config.weatherEnabled}, inIntermediate=${this.config.weatherInIntermediate}, configured=${weatherConfigured}`,
+        );
+        this.log.debug(
+            `Weather data points: todayText="${this.config.weatherTodayText}", todayTemp="${this.config.weatherTodayTemp}", tomorrowText="${this.config.weatherTomorrowText}", tomorrow="${this.config.weatherTomorrow}", tomorrowTemp="${this.config.weatherTomorrowTemp}"`,
+        );
+
         if (this.config.weatherEnabled !== false && this.config.weatherInIntermediate !== false && weatherConfigured) {
             try {
                 this.log.debug('Attempting to read weather data...');
-                
+
                 // Wetter heute lesen
                 if (this.config.weatherTodayText || this.config.weatherTodayTemp) {
-                    const weatherTodayTextState = this.config.weatherTodayText ? await this.getForeignStateAsync(this.config.weatherTodayText) : null;
-                    const weatherTodayTempState = this.config.weatherTodayTemp ? await this.getForeignStateAsync(this.config.weatherTodayTemp) : null;
-                    
-                    const weatherTodayText = weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
-                    const weatherTodayTemp = weatherTodayTempState && weatherTodayTempState.val !== null ? weatherTodayTempState.val : null;
+                    const weatherTodayTextState = this.config.weatherTodayText
+                        ? await this.getForeignStateAsync(this.config.weatherTodayText)
+                        : null;
+                    const weatherTodayTempState = this.config.weatherTodayTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTodayTemp)
+                        : null;
+
+                    const weatherTodayText =
+                        weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
+                    const weatherTodayTemp =
+                        weatherTodayTempState && weatherTodayTempState.val !== null ? weatherTodayTempState.val : null;
                     const todayTempText = weatherTodayTemp ? ` ${this.round(weatherTodayTemp, 1)}°C` : '';
-                    
+
                     if (weatherTodayText || weatherTodayTemp) {
                         const weatherDesc = weatherTodayText ? this.getWeatherDescription(weatherTodayText) : '🌡️';
                         message += `\n\n🌤️ ${this.translate('Weather today')}: ${weatherDesc}${todayTempText}`;
                         this.log.info(`Weather today added to intermediate message: ${weatherDesc}${todayTempText}`);
                     }
                 }
-                
+
                 // Wetter morgen lesen
                 if (this.config.weatherTomorrowText || this.config.weatherTomorrow) {
-                    const weatherTomorrowTextState = this.config.weatherTomorrowText ? await this.getForeignStateAsync(this.config.weatherTomorrowText) : null;
-                    const weatherTomorrowState = this.config.weatherTomorrow ? await this.getForeignStateAsync(this.config.weatherTomorrow) : null;
-                    const tempTomorrowState = this.config.weatherTomorrowTemp ? await this.getForeignStateAsync(this.config.weatherTomorrowTemp) : null;
+                    const weatherTomorrowTextState = this.config.weatherTomorrowText
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrowText)
+                        : null;
+                    const weatherTomorrowState = this.config.weatherTomorrow
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrow)
+                        : null;
+                    const tempTomorrowState = this.config.weatherTomorrowTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTomorrowTemp)
+                        : null;
 
-                    const weatherTomorrowText = weatherTomorrowTextState && weatherTomorrowTextState.val !== null ? weatherTomorrowTextState.val : null;
-                    const weatherTomorrow = weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
-                    const tempTomorrow = tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
+                    const weatherTomorrowText =
+                        weatherTomorrowTextState && weatherTomorrowTextState.val !== null
+                            ? weatherTomorrowTextState.val
+                            : null;
+                    const weatherTomorrow =
+                        weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
+                    const tempTomorrow =
+                        tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
                     const tempText = tempTomorrow ? ` ${this.round(tempTomorrow, 1)}°C` : '';
 
                     const weatherText = weatherTomorrowText || weatherTomorrow;
@@ -1082,7 +1163,9 @@ ${statusText}`;
                 }
             } catch (e) {
                 this.log.error(`Weather data error: ${e.message}`);
-                this.log.error(`Config: weatherTodayText="${this.config.weatherTodayText}", weatherTomorrowText="${this.config.weatherTomorrowText}"`);
+                this.log.error(
+                    `Config: weatherTodayText="${this.config.weatherTodayText}", weatherTomorrowText="${this.config.weatherTomorrowText}"`,
+                );
             }
         } else {
             if (this.config.weatherEnabled === false) {
@@ -1092,7 +1175,9 @@ ${statusText}`;
                 this.log.debug('Weather disabled for intermediate (weatherInIntermediate=false)');
             }
             if (!weatherConfigured) {
-                this.log.debug('Weather not configured (no weatherTodayText, weatherTodayTemp, weatherTomorrowText or weatherTomorrow)');
+                this.log.debug(
+                    'Weather not configured (no weatherTodayText, weatherTodayTemp, weatherTomorrowText or weatherTomorrow)',
+                );
             }
         }
 
@@ -1135,15 +1220,22 @@ ${statusText}`;
 ⚡ ${this.translate('Grid consumption')}: ${gridPower} kWh`;
 
         // Wetter-Prognose für morgen hinzufügen (optional, nur wenn weatherInDailyStats aktiv)
-        if (this.config.weatherEnabled !== false && this.config.weatherInDailyStats !== false && 
-            (this.config.weatherTomorrowText || this.config.weatherTomorrow)) {
+        if (
+            this.config.weatherEnabled !== false &&
+            this.config.weatherInDailyStats !== false &&
+            (this.config.weatherTomorrowText || this.config.weatherTomorrow)
+        ) {
             try {
                 const weatherTomorrowTextState = await this.getForeignStateAsync(this.config.weatherTomorrowText);
                 const weatherTomorrowState = await this.getForeignStateAsync(this.config.weatherTomorrow);
                 const tempTomorrowState = await this.getForeignStateAsync(this.config.weatherTomorrowTemp);
 
-                const weatherTomorrowText = weatherTomorrowTextState && weatherTomorrowTextState.val !== null ? weatherTomorrowTextState.val : null;
-                const weatherTomorrow = weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
+                const weatherTomorrowText =
+                    weatherTomorrowTextState && weatherTomorrowTextState.val !== null
+                        ? weatherTomorrowTextState.val
+                        : null;
+                const weatherTomorrow =
+                    weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
                 const tempTomorrow = tempTomorrowState && tempTomorrowState.val !== null ? tempTomorrowState.val : null;
                 const tempText = tempTomorrow ? ` ${this.round(tempTomorrow, 1)}°C` : '';
 
@@ -1420,7 +1512,8 @@ ${statusText}`;
             const weeklyGridPower = await this.getForeignStateAsync(this.config.weeklyGridPower);
 
             this.stats.lastWeekProduction = weeklyProd && weeklyProd.val !== null ? weeklyProd.val : 0;
-            this.stats.lastWeekConsumption = weeklyConsumption && weeklyConsumption.val !== null ? weeklyConsumption.val : 0;
+            this.stats.lastWeekConsumption =
+                weeklyConsumption && weeklyConsumption.val !== null ? weeklyConsumption.val : 0;
             this.stats.lastWeekFeedIn = weeklyFeedIn && weeklyFeedIn.val !== null ? weeklyFeedIn.val : 0;
             this.stats.lastWeekGridPower = weeklyGridPower && weeklyGridPower.val !== null ? weeklyGridPower.val : 0;
             this.stats.lastWeekFullCycles = this.stats.weekFullCycles;
@@ -1431,7 +1524,9 @@ ${statusText}`;
             this.stats.weekEmptyCycles = 0;
 
             this.saveStatistics();
-            this.log.info(`Weekly stats saved: Production=${this.stats.lastWeekProduction} kWh, FeedIn=${this.stats.lastWeekFeedIn} kWh`);
+            this.log.info(
+                `Weekly stats saved: Production=${this.stats.lastWeekProduction} kWh, FeedIn=${this.stats.lastWeekFeedIn} kWh`,
+            );
             // KEIN Senden hier - Senden erfolgt nur in startScheduledTasks() zur konfigurierten Zeit
         }
     }
@@ -1455,7 +1550,9 @@ ${statusText}`;
 
         // Automatische Speicherung: Letzter Tag des Monats um 23:55 (vor Mitternacht)
         if (today === lastDayOfMonth && hours === 23 && minutes === 55) {
-            this.log.info(`Auto-saving monthly statistics (last day of month ${today}. ${now.getMonth()+1}.${now.getFullYear()} 23:55, before sourceanalytix reset)`);
+            this.log.info(
+                `Auto-saving monthly statistics (last day of month ${today}. ${now.getMonth() + 1}.${now.getFullYear()} 23:55, before sourceanalytix reset)`,
+            );
 
             // Aktuelle Daten aus externen States lesen (direkter Zugriff)
             const totalProd = await this.getForeignStateAsync(this.config.monthlyProduction);
@@ -1472,7 +1569,9 @@ ${statusText}`;
 
             this.stats.lastMonthReset = today;
             this.saveStatistics();
-            this.log.info(`Monthly stats saved: Production=${this.stats.lastMonthProduction} kWh, FeedIn=${this.stats.lastMonthFeedIn} kWh`);
+            this.log.info(
+                `Monthly stats saved: Production=${this.stats.lastMonthProduction} kWh, FeedIn=${this.stats.lastMonthFeedIn} kWh`,
+            );
         }
     }
 
@@ -1719,8 +1818,10 @@ ${statusText}`;
                     const weatherTodayTextState = await this.getForeignStateAsync(this.config.weatherTodayText);
                     const weatherTodayState = await this.getForeignStateAsync(this.config.weatherTodayTemp);
 
-                    const weatherTodayText = weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
-                    const weatherTodayTemp = weatherTodayState && weatherTodayState.val !== null ? weatherTodayState.val : null;
+                    const weatherTodayText =
+                        weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
+                    const weatherTodayTemp =
+                        weatherTodayState && weatherTodayState.val !== null ? weatherTodayState.val : null;
                     const tempText = weatherTodayTemp ? ` ${this.round(weatherTodayTemp, 1)}°C` : '';
 
                     if (weatherTodayText || weatherTodayTemp) {
@@ -1734,12 +1835,18 @@ ${statusText}`;
                     const weatherTomorrowTextState = await this.getForeignStateAsync(this.config.weatherTomorrowText);
                     const weatherTomorrowState = await this.getForeignStateAsync(this.config.weatherTomorrowTemp);
 
-                    const weatherTomorrowText = weatherTomorrowTextState && weatherTomorrowTextState.val !== null ? weatherTomorrowTextState.val : null;
-                    const weatherTomorrowTemp = weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
+                    const weatherTomorrowText =
+                        weatherTomorrowTextState && weatherTomorrowTextState.val !== null
+                            ? weatherTomorrowTextState.val
+                            : null;
+                    const weatherTomorrowTemp =
+                        weatherTomorrowState && weatherTomorrowState.val !== null ? weatherTomorrowState.val : null;
                     const tempText = weatherTomorrowTemp ? ` ${this.round(weatherTomorrowTemp, 1)}°C` : '';
 
                     if (weatherTomorrowText || weatherTomorrowTemp) {
-                        const weatherDesc = weatherTomorrowText ? this.getWeatherDescription(weatherTomorrowText) : '🌡️';
+                        const weatherDesc = weatherTomorrowText
+                            ? this.getWeatherDescription(weatherTomorrowText)
+                            : '🌡️';
                         message += `\n🌤️ *${this.translate('Weather tomorrow')}:* ${weatherDesc}${tempText}`;
                     }
                 }
