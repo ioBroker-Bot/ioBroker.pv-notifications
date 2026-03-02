@@ -344,6 +344,10 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.7 (2026-03-02)
+
+* (FIX) Fixed io-package.json JSON syntax error (invalid duplicate news section removed)
+
 ### 1.2.6 (2026-03-02)
 
 * (FIX) Added size attributes (xs, xl) for monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption fields (E5507 fix)

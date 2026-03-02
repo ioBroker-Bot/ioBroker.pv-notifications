@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.6",
+    "version": "1.2.7",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,11 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.7": {
+        "en": "Fixed io-package.json JSON syntax error (invalid duplicate news section removed)",
+        "de": "io-package.json JSON-Syntaxfehler behoben (ungültiger doppelter news-Abschnitt entfernt)",
+        "ru": "Исправлена ошибка синтаксиса JSON в io-package.json (удален недопустимый дублирующийся раздел news)"
+      },
       "1.2.6": {
         "en": "Added size attributes (xs, xl) for monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption fields (E5507 fix)",
         "de": "Größenattribute (xs, xl) für monthlyStatsDay, monthlyStatsTime, weatherEnabled, weatherInIntermediate, weatherInDailyStats, highProduction, highConsumption Felder hinzugefügt (E5507 Fix)",
