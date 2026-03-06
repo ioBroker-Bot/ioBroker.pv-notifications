@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.13",
+    "version": "1.2.14",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,19 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.14": {
+        "en": "Fixed intermediate message formatting: Removed extra line break before weather data",
+        "de": "Intermediate-Nachricht formatiert: Zusätzlichen Zeilenumbruch vor Wetterdaten entfernt",
+        "ru": "Исправлено форматирование промежуточного сообщения: удалён лишний перенос строки перед данными погоды",
+        "pt": "Corrigida formatação da mensagem intermediária: Removida quebra de linha extra antes dos dados meteorológicos",
+        "nl": "Formattering tussentijds bericht gecorrigeerd: extra regeleis voor weergegevens verwijderd",
+        "fr": "Correction du formatage des messages intermédiaires: suppression du saut de ligne supplémentaire avant les données météo",
+        "it": "Corretta formattazione messaggio intermedio: rimossa interruzione di riga extra prima dei dati meteo",
+        "es": "Corregido formato de mensaje intermedio: Eliminada salto de línea adicional antes de datos meteorológicos",
+        "pl": "Poprawiono formatowanie wiadomości pośrednich: Usunięto dodatkowy podział wiersza przed danymi pogodowymi",
+        "uk": "Виправлено форматування проміжних повідомлень: видалено додатковий перенос рядка перед даними погоди",
+        "zh-cn": "修复中间消息格式：删除天气数据前的额外换行符"
+      },
       "1.2.13": {
         "en": "Added current production (W) to test message, daily statistics and intermediate messages with improved layout",
         "de": "Aktuelle Produktion (W) zu Test-Nachricht, Tagesstatistik und Zwischenmeldungen mit verbessertem Layout hinzugefügt",
@@ -106,19 +119,6 @@
         "pl": "Naprawiono podwójny wpis wiadomości w io-package.json (poprawka E1036/E2005)",
         "uk": "Виправлено подвійний запис новин у io-package.json (виправлення E1036/E2005)",
         "zh-cn": "已修复 io-package.json 中的重复新闻条目（E1036/E2005 修复）"
-      },
-      "1.2.7": {
-        "en": "Fixed io-package.json JSON syntax error (invalid duplicate news section removed)",
-        "de": "io-package.json JSON-Syntaxfehler behoben (ungültiger doppelter news-Abschnitt entfernt)",
-        "ru": "Исправлена ошибка синтаксиса JSON в io-package.json (удален недопустимый дублирующийся раздел news)",
-        "pt": "Erro de sintaxe JSON no io-package.json corrigido (seção de notícias duplicada removida)",
-        "nl": "JSON-syntaxfout in io-package.json hersteld (ongeldige dubbele nieuwssectie verwijderd)",
-        "fr": "Erreur de syntaxe JSON dans io-package.json corrigée (section de nouvelles en double supprimée)",
-        "it": "Errore di sintassi JSON in io-package.json corretto (sezione notizie duplicata rimossa)",
-        "es": "Error de sintaxis JSON en io-package.json corregido (sección de noticias duplicada eliminada)",
-        "pl": "Naprawiono błąd składni JSON w io-package.json (usunięto podwójną sekcję wiadomości)",
-        "uk": "Виправлено помилку синтаксису JSON у io-package.json (видалено подвійний розділ новин)",
-        "zh-cn": "已修复 io-package.json JSON 语法错误（已删除无效的重复新闻部分）"
       }
     },
     "authors": [

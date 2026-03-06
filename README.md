@@ -344,6 +344,9 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.14 (2026-03-06)
+* (FIX) Fixed intermediate message formatting: Removed extra line break before weather data (weather today appears directly below separator)
+
 ### 1.2.13 (2026-03-03)
 * (ADD) Added current production (W) to test message, daily statistics and intermediate messages with improved layout
 * (FIX) README.md Changelog updated for repository checker (E6006 fix)

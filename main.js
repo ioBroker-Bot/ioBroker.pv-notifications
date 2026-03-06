@@ -1143,7 +1143,7 @@ ${statusText}
 
                     if (weatherTodayText || weatherTodayTemp) {
                         const weatherDesc = weatherTodayText ? this.getWeatherDescription(weatherTodayText) : '🌡️';
-                        message += `\n\n🌤️ ${this.translate('Weather today')}: ${weatherDesc}${todayTempText}`;
+                        message += `\n🌤️ ${this.translate('Weather today')}: ${weatherDesc}${todayTempText}`;
                         this.log.info(`Weather today added to intermediate message: ${weatherDesc}${todayTempText}`);
                     }
                 }
@@ -1378,7 +1378,7 @@ ${statusText}
 🏠 ${this.translate('Own consumption')}: ${selfConsumption} kWh (${selfConsumptionRate}%)
 🔌 ${this.translate('Feed-in')}: ${feedIn} kWh
 ⚡ ${this.translate('Grid consumption')}: ${gridPower} kWh
-━━━━━━━━━━━━━━━━━━━━━━`;
+━━━━━━━━━━━━���━━━━━━━━━`;
     }
 
     /**

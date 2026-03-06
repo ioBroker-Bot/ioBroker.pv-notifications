@@ -314,6 +314,14 @@ Zwischen **12:00 und 15:00** (konfigurierbar) werden **alle** Benachrichtigungen
 
 **Hinweis:** Der Ruhemodus unterdrückt alle Benachrichtigungen einschließlich 0% Batterie. Verwende ihn für Zeiten, in denen du gar nicht gestört werden möchtest (z.B. Mittagsschlaf, Meetings).
 
+## Changelog
+
+### 1.2.14 (06.03.2026)
+- Intermediate-Nachricht formatiert: Zusätzlichen Zeilenumbruch vor Wetterdaten entfernt
+
+### 1.2.13 (03.03.2026)
+- Aktuelle Produktion (W) zu Test-Nachricht, Tagesstatistik und Zwischenmeldungen mit verbessertem Layout hinzugefügt
+
 ## Lizenz
 
 MIT License
