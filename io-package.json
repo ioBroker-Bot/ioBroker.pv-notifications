@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.14",
+    "version": "1.2.15",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,19 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.15": {
+        "en": "Added separator lines to battery full/empty and intermediate messages for improved readability",
+        "de": "Trennlinien zu Batterie VOLL/LEER und Intermediate-Nachrichten für bessere Lesbarkeit hinzugefügt",
+        "ru": "Добавлены разделительные линии к сообщениям о полной/пустой батарее и промежуточным сообщениям для улучшения читаемости",
+        "pt": "Adicionadas linhas separadoras às mensagens de bateria cheia/vazia e intermediárias para melhor legibilidade",
+        "nl": "Scheidinglijnen toegevoegd aan batterij vol/leeg en intermediate-berichten voor verbeterde leesbaarheid",
+        "fr": "Ajout de lignes séparatrices aux messages batterie pleine/vide et intermédiaires pour une meilleure lisibilité",
+        "it": "Aggiunte linee separatrici ai messaggi di batteria piena/vuota e intermedi per una migliore leggibilità",
+        "es": "Agregadas líneas separadoras a los mensajes de batería llena/vacía e intermedios para mejorar la legibilidad",
+        "pl": "Dodano linie oddzielające do wiadomości o pełnej/pustej baterii i pośrednich dla lepszej czytelności",
+        "uk": "Додано розділювальні лінії до повідомлень про повну/порожню батарею та проміжних для покращення читабельності",
+        "zh-cn": "已添加分隔线到电池满/空和中间消息以提高可读性"
+      },
       "1.2.14": {
         "en": "Fixed intermediate message formatting: Removed extra line break before weather data",
         "de": "Intermediate-Nachricht formatiert: Zusätzlichen Zeilenumbruch vor Wetterdaten entfernt",
@@ -106,19 +119,6 @@
         "pl": "Naprawiono problemy z formatowaniem ESLint (75 błędów prettier/prettier automatycznie naprawionych za pomocą lint:fix)",
         "uk": "Виправлено проблеми з форматуванням ESLint (75 помилок prettier/prettier автоматично виправлено за допомогою lint:fix)",
         "zh-cn": "已修复 ESLint 格式化问题（75 个 prettier/prettier 错误已通过 lint:fix 自动修复）"
-      },
-      "1.2.8": {
-        "en": "Fixed duplicate news entry in io-package.json (E1036/E2005 fix)",
-        "de": "Doppelten news-Eintrag in io-package.json behoben (E1036/E2005 Fix)",
-        "ru": "Исправлена дублирующаяся запись news в io-package.json (исправление E1036/E2005)",
-        "pt": "Corrigida entrada duplicada de notícias no io-package.json (correção E1036/E2005)",
-        "nl": "Dubbele nieuwsvermelding in io-package.json hersteld (E1036/E2005 fix)",
-        "fr": "Correction d'une entrée de nouvelles en double dans io-package.json (correction E1036/E2005)",
-        "it": "Corretta voce duplicata delle notizie in io-package.json (correzione E1036/E2005)",
-        "es": "Entrada de noticias duplicada corregida en io-package.json (corrección E1036/E2005)",
-        "pl": "Naprawiono podwójny wpis wiadomości w io-package.json (poprawka E1036/E2005)",
-        "uk": "Виправлено подвійний запис новин у io-package.json (виправлення E1036/E2005)",
-        "zh-cn": "已修复 io-package.json 中的重复新闻条目（E1036/E2005 修复）"
       }
     },
     "authors": [

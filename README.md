@@ -344,6 +344,9 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.15 (2026-03-08)
+* (ADD) Added separator lines to battery full/empty and intermediate messages for improved readability
+
 ### 1.2.14 (2026-03-06)
 * (FIX) Fixed intermediate message formatting: Removed extra line break before weather data (weather today appears directly below separator)
 

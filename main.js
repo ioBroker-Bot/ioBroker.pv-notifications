@@ -888,12 +888,14 @@ class PvNotifications extends utils.Adapter {
         const feedIn = feedInState && feedInState.val !== null ? feedInState.val : 0;
         const consumption = consumptionState && consumptionState.val !== null ? consumptionState.val : 0;
 
-        let message = `🔋 *${this.translate('Battery full')}* (${soc}%)
+        const separator = '\n━━━━━━━━━━━━━━━━━━━━━━';
+
+        let message = `🔋 *${this.translate('Battery full')}* (${soc}%)${separator}
 
 ⚡ ${this.translate('Current production')}: ${this.round(power)} W
 🏠 ${this.translate('Current consumption')}: ${this.round(consumption)} W
 ☀️ ${this.translate('Production today')}: ${this.round(totalProd)} kWh
-🔌 ${this.translate('Feed-in today')}: ${this.round(Math.abs(feedIn), 0)} kWh`;
+🔌 ${this.translate('Feed-in today')}: ${this.round(Math.abs(feedIn), 0)} kWh${separator}`;
 
         // Wetter-Prognose hinzufügen (heute und morgen)
         const weatherConfigured =
@@ -963,7 +965,7 @@ class PvNotifications extends utils.Adapter {
 
         // Empfehlungen bei hoher Produktion
         if (power > this.config.highProduction) {
-            message += `\n\n🚗 ${this.translate('Now ideal for electric car washing machine dishwasher')}`;
+            message += `${separator}\n🚗 ${this.translate('Now ideal for electric car washing machine dishwasher')}`;
         }
 
         return message;
@@ -982,10 +984,12 @@ class PvNotifications extends utils.Adapter {
         const gridPower = gridPowerState && gridPowerState.val !== null ? gridPowerState.val : 0;
         const consumption = consumptionState && consumptionState.val !== null ? consumptionState.val : 0;
 
-        let message = `🔋 *${this.translate('Battery empty')}* (${soc}%)
+        const separator = '\n━━━━━━━━━━━━━━━━━━━━━━';
+
+        let message = `🔋 *${this.translate('Battery empty')}* (${soc}%)${separator}
 
 ⚠️ ${this.translate('Grid consumption today')}: ${this.round(gridPower)} W
-🏠 ${this.translate('Consumption today')}: ${this.round(consumption)} W`;
+🏠 ${this.translate('Consumption today')}: ${this.round(consumption)} W${separator}`;
 
         // Wetter-Prognose hinzufügen (heute und morgen)
         const weatherConfigured =
@@ -1055,7 +1059,7 @@ class PvNotifications extends utils.Adapter {
 
         // Spartipps
         if (consumption > this.config.highConsumption) {
-            message += `\n\n💰 ${this.translate('High consumption Turn off unnecessary devices')}`;
+            message += `${separator}\n💰 ${this.translate('High consumption Turn off unnecessary devices')}`;
         }
 
         return message;
@@ -1196,6 +1200,8 @@ ${statusText}
                 );
             }
         }
+
+        message += '\n━━━━━━━━━━━━━━━━━━━━━━';
 
         return message;
     }
@@ -1373,7 +1379,7 @@ ${statusText}
 ━━━━━━━━━━━━━━━━━━━━━━
 🔋 ${this.translate('Full cycles last month')}: ${this.stats.lastMonthFullCycles}
 📉 ${this.translate('Empty cycles last month')}: ${this.stats.lastMonthEmptyCycles}
-━━━━━━━━━━━━━━━━━━━━━━
+���━━━━━━━━━━━━━━━━━━━━━
 ☀️ ${this.translate('Production')}: ${totalProd} kWh
 🏠 ${this.translate('Own consumption')}: ${selfConsumption} kWh (${selfConsumptionRate}%)
 🔌 ${this.translate('Feed-in')}: ${feedIn} kWh
