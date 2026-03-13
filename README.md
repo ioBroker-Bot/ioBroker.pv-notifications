@@ -344,6 +344,9 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.16 (2026-03-14)
+* (FIX) Removed empty line in battery full message for improved formatting
+
 ### 1.2.15 (2026-03-08)
 * (ADD) Added separator lines to battery full/empty and intermediate messages for improved readability
 

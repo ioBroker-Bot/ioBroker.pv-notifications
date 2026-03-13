@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.15",
+    "version": "1.2.16",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,19 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.16": {
+        "en": "Removed empty line in battery full message for improved formatting",
+        "de": "Leere Zeile in Batterie VOLL Nachricht für bessere Formatierung entfernt",
+        "ru": "Удалена пустая строка в сообщении о полной батарее для улучшения форматирования",
+        "pt": "Removida linha vazia na mensagem de bateria cheia para melhor formatação",
+        "nl": "Lege regel verwijderd in batterij vol-bericht voor verbeterde opmaak",
+        "fr": "Suppression de la ligne vide dans le message batterie pleine pour un meilleur formatage",
+        "it": "Rimossa riga vuota nel messaggio di batteria piena per un migliore formattazione",
+        "es": "Eliminada línea vacía en el mensaje de batería llena para mejorar el formato",
+        "pl": "Usunięto pusty wiersz w wiadomości o pełnej baterii dla lepszej formatowania",
+        "uk": "Видалено порожній рядок у повідомленні про повну батарею для покращення форматування",
+        "zh-cn": "已删除电池满消息中的空行以改善格式"
+      },
       "1.2.15": {
         "en": "Added separator lines to battery full/empty and intermediate messages for improved readability",
         "de": "Trennlinien zu Batterie VOLL/LEER und Intermediate-Nachrichten für bessere Lesbarkeit hinzugefügt",

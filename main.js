@@ -891,7 +891,6 @@ class PvNotifications extends utils.Adapter {
         const separator = '\n━━━━━━━━━━━━━━━━━━━━━━';
 
         let message = `🔋 *${this.translate('Battery full')}* (${soc}%)${separator}
-
 ⚡ ${this.translate('Current production')}: ${this.round(power)} W
 🏠 ${this.translate('Current consumption')}: ${this.round(consumption)} W
 ☀️ ${this.translate('Production today')}: ${this.round(totalProd)} kWh
