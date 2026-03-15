@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.16",
+    "version": "1.2.17",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,19 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.17": {
+        "en": "Removed old versions from common.news to comply with W1032 (maximum 7 versions)",
+        "de": "Alte Versionen aus common.news entfernt zur Einhaltung von W1032 (maximal 7 Versionen)",
+        "ru": "Удалены старые версии из common.news для соответствия W1032 (максимум 7 версий)",
+        "pt": "Versões antigas removidas de common.news para cumprir W1032 (máximo 7 versões)",
+        "nl": "Oude versies verwijderd uit common.news om te voldoen aan W1032 (maximaal 7 versies)",
+        "fr": "Anciennes versions supprimées de common.news pour respecter W1032 (maximum 7 versions)",
+        "it": "Rimosse vecchie versioni da common.news per rispettare W1032 (massimo 7 versioni)",
+        "es": "Versiones antiguas eliminadas de common.news para cumplir con W1032 (máximo 7 versiones)",
+        "pl": "Usunięto stare wersje z common.news zgodnie z W1032 (maksymalnie 7 wersji)",
+        "uk": "Видалено старі версії з common.news для відповідності W1032 (максимум 7 версій)",
+        "zh-cn": "已从 common.news 中删除旧版本以符合 W1032（最多 7 个版本）"
+      },
       "1.2.16": {
         "en": "Removed empty line in battery full message for improved formatting",
         "de": "Leere Zeile in Batterie VOLL Nachricht für bessere Formatierung entfernt",
@@ -106,32 +119,6 @@
         "pl": "Naprawiono statystyki dzienne: zużycie własne nie może być ujemne (Math.max), dodano pogodę dzisiaj do statystyk dziennych",
         "uk": "Виправлено денну статистику: власне споживання не може бути від'ємним (Math.max), додано погоду сьогодні до денної статистики",
         "zh-cn": "已修复每日统计：自用电量不能为负数（Math.max），已添加今日天气到每日统计"
-      },
-      "1.2.10": {
-        "en": "Fixed W4040/W4042: Updated schema definitions in .vscode/settings.json (fileMatch without leading slashes, URLs with /master/)",
-        "de": "W4040/W4042 behoben: Schema-Definitionen in .vscode/settings.json aktualisiert (fileMatch ohne führende Slashes, URLs mit /master/)",
-        "ru": "Исправлено W4040/W4042: обновлены определения схем в .vscode/settings.json (fileMatch без начальных слешей, URL с /master/)",
-        "pt": "Corrigido W4040/W4042: Atualizadas definições de esquema em .vscode/settings.json (fileMatch sem barras iniciais, URLs com /master/)",
-        "nl": "W4040/W4042 opgelost: Schema-definities bijgewerkt in .vscode/settings.json (fileMatch zonder voorloopslashes, URL's met /master/)",
-        "fr": "Correction W4040/W4042 : Définitions de schéma mises à jour dans .vscode/settings.json (fileMatch sans barres obliques, URLs avec /master/)",
-        "it": "Corretto W4040/W4042: Aggiornate definizioni di schema in .vscode/settings.json (fileMatch senza barre iniziali, URL con /master/)",
-        "es": "Corregido W4040/W4042: Actualizadas definiciones de esquema en .vscode/settings.json (fileMatch sin barras iniciales, URLs con /master/)",
-        "pl": "Naprawiono W4040/W4042: Zaktualizowano definicje schematu w .vscode/settings.json (fileMatch bez wiodących ukośników, adresy URL z /master/)",
-        "uk": "Виправлено W4040/W4042: Оновлено визначення схеми в .vscode/settings.json (fileMatch без початкових скісних рисок, URL-адреси з /master/)",
-        "zh-cn": "已修复 W4040/W4042：已更新 .vscode/settings.json 中的架构定义（fileMatch 无前导斜杠，URL 使用 /master/）"
-      },
-      "1.2.9": {
-        "en": "Fixed ESLint formatting issues (75 prettier/prettier errors auto-fixed with lint:fix)",
-        "de": "ESLint-Formatierungsfehler behoben (75 prettier/prettier Fehler mit lint:fix automatisch korrigiert)",
-        "ru": "Исправлены ошибки форматирования ESLint (75 ошибок prettier/prettier автоматически исправлены через lint:fix)",
-        "pt": "Corrigidos problemas de formatação ESLint (75 erros prettier/prettier corrigidos automaticamente com lint:fix)",
-        "nl": "ESLint-opmaakproblemen opgelost (75 prettier/prettier-fouten automatisch hersteld met lint:fix)",
-        "fr": "Correction des problèmes de formatage ESLint (75 erreurs prettier/prettier corrigées automatiquement avec lint:fix)",
-        "it": "Corretti problemi di formattazione ESLint (75 errori prettier/prettier corretti automaticamente con lint:fix)",
-        "es": "Corregidos problemas de formato ESLint (75 errores prettier/prettier corregidos automáticamente con lint:fix)",
-        "pl": "Naprawiono problemy z formatowaniem ESLint (75 błędów prettier/prettier automatycznie naprawionych za pomocą lint:fix)",
-        "uk": "Виправлено проблеми з форматуванням ESLint (75 помилок prettier/prettier автоматично виправлено за допомогою lint:fix)",
-        "zh-cn": "已修复 ESLint 格式化问题（75 个 prettier/prettier 错误已通过 lint:fix 自动修复）"
       }
     },
     "authors": [

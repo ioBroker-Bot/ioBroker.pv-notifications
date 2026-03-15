@@ -344,6 +344,9 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.17 (2026-03-15)
+* (FIX) Removed old versions from common.news to comply with W1032 (maximum 7 versions)
+
 ### 1.2.16 (2026-03-14)
 * (FIX) Removed empty line in battery full message for improved formatting
 
