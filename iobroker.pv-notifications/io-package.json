@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.17",
+    "version": "1.2.18",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,19 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.18": {
+        "en": "Fixed missing await on onBatterySOCChange, null-check in buildTestMessage weather, safe intermediateSteps parsing, removed dead code",
+        "de": "Fehlenden await bei onBatterySOCChange behoben, Null-Check in buildTestMessage Wetter, sichere intermediateSteps-Verarbeitung, toten Code entfernt",
+        "ru": "Исправлен отсутствующий await в onBatterySOCChange, null-check в погоде buildTestMessage, безопасный парсинг intermediateSteps, удалён мёртвый код",
+        "pt": "Corrigido await ausente em onBatterySOCChange, null-check no clima buildTestMessage, análise segura de intermediateSteps, código morto removido",
+        "nl": "Ontbrekende await in onBatterySOCChange opgelost, null-check in buildTestMessage weer, veilige intermediateSteps-verwerking, dode code verwijderd",
+        "fr": "Correction du await manquant dans onBatterySOCChange, null-check dans la météo buildTestMessage, analyse sécurisée des intermediateSteps, code mort supprimé",
+        "it": "Corretto await mancante in onBatterySOCChange, null-check nel meteo buildTestMessage, analisi sicura di intermediateSteps, codice morto rimosso",
+        "es": "Corregido await faltante en onBatterySOCChange, null-check en clima buildTestMessage, análisis seguro de intermediateSteps, código muerto eliminado",
+        "pl": "Naprawiono brakujący await w onBatterySOCChange, null-check w pogodzie buildTestMessage, bezpieczne parsowanie intermediateSteps, usunięto martwy kod",
+        "uk": "Виправлено відсутній await в onBatterySOCChange, null-check у погоді buildTestMessage, безпечний парсинг intermediateSteps, видалено мертвий код",
+        "zh-cn": "修复 onBatterySOCChange 中缺少的 await，buildTestMessage 天气中的 null 检查，安全的 intermediateSteps 解析，删除死代码"
+      },
       "1.2.17": {
         "en": "Removed old versions from common.news to comply with W1032 (maximum 7 versions)",
         "de": "Alte Versionen aus common.news entfernt zur Einhaltung von W1032 (maximal 7 Versionen)",
@@ -106,19 +119,6 @@
         "pl": "Changelog w README.md zaktualizowany dla sprawdzania repozytorium (poprawka E6006)",
         "uk": "Changelog у README.md оновлено для перевірки репозиторію (виправлення E6006)",
         "zh-cn": "已更新 README.md Changelog 用于仓库检查器（E6006 修复）"
-      },
-      "1.2.11": {
-        "en": "Fixed daily statistics: self-consumption cannot be negative (Math.max), added weather today to daily stats message",
-        "de": "Tagesstatistik fixiert: Eigenverbrauch kann nicht negativ sein (Math.max), Wetter heute zur Tagesstatistik hinzugefügt",
-        "ru": "Исправлена дневная статистика: собственное потребление не может быть отрицательным (Math.max), добавлена погода сегодня в дневную статистику",
-        "pt": "Estatísticas diárias corrigidas: autoconsumo não pode ser negativo (Math.max), adicionado clima de hoje às estatísticas diárias",
-        "nl": "Dagelijkse statistieken hersteld: eigen verbruik kan niet negatief zijn (Math.max), weer vandaag toegevoegd aan dagelijkse statistieken",
-        "fr": "Statistiques quotidiennes corrigées : l'autoconsommation ne peut pas être négative (Math.max), météo d'aujourd'hui ajoutée aux statistiques quotidiennes",
-        "it": "Statistiche giornaliere corrette: l'autoconsumo non può essere negativo (Math.max), aggiunto meteo di oggi alle statistiche giornaliere",
-        "es": "Estadísticas diarias corregidas: el autoconsumo no puede ser negativo (Math.max), agregado clima de hoy a las estadísticas diarias",
-        "pl": "Naprawiono statystyki dzienne: zużycie własne nie może być ujemne (Math.max), dodano pogodę dzisiaj do statystyk dziennych",
-        "uk": "Виправлено денну статистику: власне споживання не може бути від'ємним (Math.max), додано погоду сьогодні до денної статистики",
-        "zh-cn": "已修复每日统计：自用电量不能为负数（Math.max），已添加今日天气到每日统计"
       }
     },
     "authors": [

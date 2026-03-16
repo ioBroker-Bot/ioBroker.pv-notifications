@@ -549,13 +549,6 @@ class PvNotifications extends utils.Adapter {
     }
 
     /**
-     * Is called when adapter receives configuration.
-     */
-    async onConfigChange() {
-        this.log.info('Configuration changed');
-    }
-
-    /**
      * Is called if a subscribed state changes
      *
      * @param {string} id - State ID
@@ -580,7 +573,7 @@ class PvNotifications extends utils.Adapter {
 
             // Process battery SOC change
             if (id === this.config.batterySOC) {
-                this.onBatterySOCChange(state.val);
+                await this.onBatterySOCChange(state.val);
                 return;
             }
 
@@ -711,7 +704,10 @@ class PvNotifications extends utils.Adapter {
         }
         // === Intermediate-Stufen (nur wenn nicht voll/leer und nicht nachts und nicht in Ruhezeit) ===
         if (soc !== this.config.thresholdFull && soc !== this.config.thresholdEmpty) {
-            const intermediateSteps = this.config.intermediateSteps.split(',').map(s => parseInt(s.trim()));
+            const intermediateSteps = (this.config.intermediateSteps || '20,40,60,80')
+                .split(',')
+                .map(s => parseInt(s.trim()))
+                .filter(n => !isNaN(n));
 
             // Prüfe Intermediate-Stufen - nur außerhalb der Nachtzeit und Ruhezeit
             const allowIntermediate = (!nightTime || !nightModeActive) && (!quietTime || !quietModeActive);
@@ -1093,10 +1089,10 @@ class PvNotifications extends utils.Adapter {
             direction === 'up'
                 ? this.systemLang === 'ru'
                     ? '✅ Батарея заряжается'
-                    : '✅ Batterie wird geladen'
+                    : '✅ Battery charging'
                 : this.systemLang === 'ru'
                   ? '⚠️ Батарея разряжается'
-                  : '⚠️ Batterie wird entladen';
+                  : '⚠️ Battery discharging';
 
         // Einheitliche Nachricht für alle Stufen (20, 40, 60, 80)
         const batteryAt = this.translate('Battery at');
@@ -1468,23 +1464,6 @@ ${statusText}
     }
 
     /**
-     * State-Wert holen
-     *
-     * @param {string} id - State ID
-     */
-    getStateValue(id) {
-        if (!id) {
-            return 0;
-        }
-        try {
-            const state = this.getState(id);
-            return state && state.val !== null && state.val !== undefined ? state.val : 0;
-        } catch {
-            return 0;
-        }
-    }
-
-    /**
      * Runde Zahl auf Dezimalstellen
      *
      * @param {number} value - Wert zum Runden
@@ -1540,7 +1519,7 @@ ${statusText}
         }, 60000); // Jede Minute ausführen
 
         this.log.info(
-            `Zeitgesteuerte Aufgaben gestartet (Täglich: ${this.config.statsDayTime}, Wöchentlich: Tag ${this.config.statsWeekDay} um ${this.config.statsWeekTime})`,
+            `Scheduled tasks started (Daily: ${this.config.statsDayTime}, Weekly: day ${this.config.statsWeekDay} at ${this.config.statsWeekTime})`,
         );
     }
 
@@ -1899,8 +1878,12 @@ ${statusText}
             try {
                 // Wetter heute
                 if (this.config.weatherTodayText || this.config.weatherTodayTemp) {
-                    const weatherTodayTextState = await this.getForeignStateAsync(this.config.weatherTodayText);
-                    const weatherTodayState = await this.getForeignStateAsync(this.config.weatherTodayTemp);
+                    const weatherTodayTextState = this.config.weatherTodayText
+                        ? await this.getForeignStateAsync(this.config.weatherTodayText)
+                        : null;
+                    const weatherTodayState = this.config.weatherTodayTemp
+                        ? await this.getForeignStateAsync(this.config.weatherTodayTemp)
+                        : null;
 
                     const weatherTodayText =
                         weatherTodayTextState && weatherTodayTextState.val !== null ? weatherTodayTextState.val : null;
