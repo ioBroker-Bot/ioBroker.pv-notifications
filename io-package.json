@@ -119,8 +119,8 @@
         "pl": "Dodano aktualną produkcję (W) do wiadomości testowej, statystyk dziennych i wiadomości pośrednich z ulepszonym układem",
         "uk": "Додано поточне виробництво (Вт) до тестового повідомлення, денної статистики та проміжних повідомлень з покращеним макетом",
         "zh-cn": "已添加当前发电量（W）到测试消息、每日统计和中间消息，并改进了布局"
-      },
-      "1.2.13": {
+      }
+    },
     "authors": [
       "Alex <alex@example.com>"
     ],
