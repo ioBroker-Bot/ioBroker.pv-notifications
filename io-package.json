@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.23",
+    "version": "1.2.24",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,19 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.24": {
+        "en": "Add missing uk translations to news, fix prettier formatting in main.js",
+        "de": "Fehlende uk-Uebersetzungen in news ergaenzt, Prettier-Formatierung in main.js korrigiert",
+        "ru": "Добавлены недостающие uk-переводы в news, исправлено форматирование prettier в main.js",
+        "fr": "Ajout des traductions uk manquantes dans news, correction formatage prettier dans main.js",
+        "it": "Aggiunte traduzioni uk mancanti in news, corretta formattazione prettier in main.js",
+        "es": "Anadidas traducciones uk faltantes en news, corregido formato prettier en main.js",
+        "pl": "Dodano brakujace tlumaczenia uk w news, poprawiono formatowanie prettier w main.js",
+        "pt": "Adicionadas traducoes uk em falta em news, corrigida formatacao prettier em main.js",
+        "nl": "Ontbrekende uk-vertalingen toegevoegd aan news, prettier-opmaak gecorrigeerd in main.js",
+        "uk": "Додано відсутні uk-переклади до news, виправлено форматування prettier у main.js",
+        "zh-cn": "添加 news 中缺失的 uk 翻译，修复 main.js 中的 prettier 格式"
+      },
       "1.2.23": {
         "en": "Fix statistics section layout: align daily time, sunset checkbox and sunset object on one row",
         "de": "Layout der Statistik-Sektion korrigiert: Tageszeit, Sonnenuntergang-Checkbox und Objekt in einer Zeile",
@@ -39,7 +52,8 @@
         "pl": "Poprawka ukladu sekcji statystyk: czas, pole zachodu slonca i obiekt w jednym wierszu",
         "pt": "Correcao layout seccao estatisticas: hora, caixa por do sol e objeto numa linha",
         "nl": "Lay-out statistieksectie gecorrigeerd: tijd, zonsondergang-checkbox en object op een rij",
-        "zh-cn": "修复统计部分布局：将时间、日落复选框和对象放在同一行"
+        "zh-cn": "修复统计部分布局：将时间、日落复选框和对象放在同一行",
+        "uk": "Виправлено макет секції статистики: час, чекбокс заходу сонця та обєкт в одному рядку"
       },
       "1.2.22": {
         "en": "Add sunset-based daily statistics: optional checkbox to send daily stats at sunset time from a configurable object instead of fixed time",
@@ -51,7 +65,8 @@
         "pl": "Statystyki dzienne o zachodzie slonca: opcjonalne pole wyboru do wysylania statystyk o zachodzie slonca z konfigurowalnego obiektu zamiast stalej godziny",
         "pt": "Estatisticas diarias ao por do sol: caixa opcional para enviar estatisticas na hora do por do sol de um objeto configuravel em vez de hora fixa",
         "nl": "Dagelijkse statistieken bij zonsondergang: optioneel selectievakje om dagelijkse statistieken te sturen op zonsondergangtijd van een configureerbaar object in plaats van vaste tijd",
-        "zh-cn": "日落时发送每日统计：可选复选框，在可配置对象的日落时间发送每日统计，而非固定时间"
+        "zh-cn": "日落时发送每日统计：可选复选框，在可配置对象的日落时间发送每日统计，而非固定时间",
+        "uk": "Додано відправку денної статистики за заходом сонця: опціональний чекбокс для відправки статистики в момент заходу сонця з обєкта що налаштовується замість фіксованого часу"
       },
       "1.2.21": {
         "en": "Fix: use extendObject instead of setObjectNotExists for states with unit/role to update existing instances",
@@ -63,7 +78,8 @@
         "pl": "Fix: extendObject zamiast setObjectNotExists dla states z unit/role aby zaktualizowac istniejace instancje",
         "pt": "Fix: extendObject em vez de setObjectNotExists para states com unit/role para atualizar instancias existentes",
         "nl": "Fix: extendObject in plaats van setObjectNotExists voor states met unit/role om bestaande instanties bij te werken",
-        "zh-cn": "修复：对带有 unit/role 的 state 使用 extendObject 而非 setObjectNotExists，以更新现有实例"
+        "zh-cn": "修复：对带有 unit/role 的 state 使用 extendObject 而非 setObjectNotExists，以更新现有实例",
+        "uk": "Виправлено: extendObject замість setObjectNotExists для states з unit/role для оновлення існуючих екземплярів"
       },
       "1.2.20": {
         "en": "Fix PR#5576: remove unused admin files, reduce info logs to debug, English state names with units, channel objects for statistics/info, button read:false, this.setInterval, translate fallback to English",
@@ -75,7 +91,8 @@
         "pl": "Fix PR#5576: usunieto nieuzywane pliki admin, logi info zredukowane do debug, angielskie nazwy stanow z jednostkami, obiekty channel dla statistics/info, button read:false, this.setInterval, fallback translate na angielski",
         "pt": "Fix PR#5576: removidos ficheiros admin nao usados, logs info reduzidos a debug, nomes estados ingles com unidades, objetos channel para statistics/info, button read:false, this.setInterval, fallback translate para ingles",
         "nl": "Fix PR#5576: ongebruikte admin-bestanden verwijderd, info-logs teruggebracht naar debug, Engelse state-namen met eenheden, channel-objecten voor statistics/info, button read:false, this.setInterval, translate fallback naar Engels",
-        "zh-cn": "修复 PR#5576：删除未使用的 admin 文件，将 info 日志降级为 debug，英文 state 名称带单位，statistics/info 的 channel 对象，button read:false，this.setInterval，translate 回退到英文"
+        "zh-cn": "修复 PR#5576：删除未使用的 admin 文件，将 info 日志降级为 debug，英文 state 名称带单位，statistics/info 的 channel 对象，button read:false，this.setInterval，translate 回退到英文",
+        "uk": "Fix PR#5576: видалено невикористані файли admin, info-логи знижено до debug, англійські імена states з одиницями, channel-обєкти для statistics/info, button read:false, this.setInterval, fallback translate на англійську"
       },
       "1.2.19": {
         "en": "Added v1.2.18 entry to news section in io-package.json",
@@ -102,19 +119,6 @@
         "pl": "Naprawiono brakujący await w onBatterySOCChange, sprawdzanie null w buildTestMessage, bezpieczne parsowanie intermediateSteps, usunięto martwy kod",
         "uk": "Виправлено відсутній await в onBatterySOCChange, перевірка null в buildTestMessage, безпечний парсинг intermediateSteps, видалено мертвий код",
         "zh-cn": "修复 onBatterySOCChange 中缺少的 await，buildTestMessage 中的 null 检查，安全的 intermediateSteps 解析，删除死代码"
-      },
-      "1.2.17": {
-        "en": "Removed old versions from common.news to comply with W1032 (maximum 7 versions)",
-        "de": "Alte Versionen aus common.news entfernt zur Einhaltung von W1032 (maximal 7 Versionen)",
-        "ru": "Удалены старые версии из common.news для соответствия W1032 (максимум 7 версий)",
-        "pt": "Versões antigas removidas de common.news para cumprir W1032 (máximo 7 versões)",
-        "nl": "Oude versies verwijderd uit common.news om te voldoen aan W1032 (maximaal 7 versies)",
-        "fr": "Anciennes versions supprimées de common.news pour respecter W1032 (maximum 7 versions)",
-        "it": "Rimosse vecchie versioni da common.news per rispettare W1032 (massimo 7 versioni)",
-        "es": "Versiones antiguas eliminadas de common.news para cumplir con W1032 (máximo 7 versiones)",
-        "pl": "Usunięto stare wersje z common.news zgodnie z W1032 (maksymalnie 7 wersji)",
-        "uk": "Видалено старі версії з common.news для відповідності W1032 (максимум 7 версій)",
-        "zh-cn": "已从 common.news 中删除旧版本以符合 W1032（最多 7 个版本）"
       }
     },
     "authors": [

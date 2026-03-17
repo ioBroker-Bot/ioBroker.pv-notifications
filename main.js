@@ -125,11 +125,27 @@ class PvNotifications extends utils.Adapter {
         });
         await this.extendObject('statistics.maxSOCToday', {
             type: 'state',
-            common: { name: 'Max SOC today', type: 'number', role: 'value.battery', read: true, write: false, def: 0, unit: '%' },
+            common: {
+                name: 'Max SOC today',
+                type: 'number',
+                role: 'value.battery',
+                read: true,
+                write: false,
+                def: 0,
+                unit: '%',
+            },
         });
         await this.extendObject('statistics.minSOCToday', {
             type: 'state',
-            common: { name: 'Min SOC today', type: 'number', role: 'value.battery', read: true, write: false, def: 100, unit: '%' },
+            common: {
+                name: 'Min SOC today',
+                type: 'number',
+                role: 'value.battery',
+                read: true,
+                write: false,
+                def: 100,
+                unit: '%',
+            },
         });
         await this.setObjectNotExists('statistics.fullCyclesWeek', {
             type: 'state',
@@ -141,7 +157,15 @@ class PvNotifications extends utils.Adapter {
         });
         await this.extendObject('statistics.currentSOC', {
             type: 'state',
-            common: { name: 'Current SOC', type: 'number', role: 'value.battery', read: true, write: false, def: 0, unit: '%' },
+            common: {
+                name: 'Current SOC',
+                type: 'number',
+                role: 'value.battery',
+                read: true,
+                write: false,
+                def: 0,
+                unit: '%',
+            },
         });
         await this.extendObject('statistics.currentEnergyKWh', {
             type: 'state',
@@ -157,7 +181,15 @@ class PvNotifications extends utils.Adapter {
         });
         await this.extendObject('statistics.currentPower', {
             type: 'state',
-            common: { name: 'Current power', type: 'number', role: 'value.power', read: true, write: false, def: 0, unit: 'W' },
+            common: {
+                name: 'Current power',
+                type: 'number',
+                role: 'value.power',
+                read: true,
+                write: false,
+                def: 0,
+                unit: 'W',
+            },
         });
         await this.extendObject('statistics.currentTotalProduction', {
             type: 'state',
@@ -173,15 +205,39 @@ class PvNotifications extends utils.Adapter {
         });
         await this.extendObject('statistics.currentFeedIn', {
             type: 'state',
-            common: { name: 'Feed-in today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
+            common: {
+                name: 'Feed-in today',
+                type: 'number',
+                role: 'value.energy',
+                read: true,
+                write: false,
+                def: 0,
+                unit: 'kWh',
+            },
         });
         await this.extendObject('statistics.currentConsumption', {
             type: 'state',
-            common: { name: 'Consumption today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
+            common: {
+                name: 'Consumption today',
+                type: 'number',
+                role: 'value.energy',
+                read: true,
+                write: false,
+                def: 0,
+                unit: 'kWh',
+            },
         });
         await this.extendObject('statistics.currentGridPower', {
             type: 'state',
-            common: { name: 'Grid power today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
+            common: {
+                name: 'Grid power today',
+                type: 'number',
+                role: 'value.energy',
+                read: true,
+                write: false,
+                def: 0,
+                unit: 'kWh',
+            },
         });
 
         // States für letzte Monats-/Wochenstatistik
@@ -269,7 +325,15 @@ class PvNotifications extends utils.Adapter {
         });
         await this.extendObject('statistics.lastWeekConsumption', {
             type: 'state',
-            common: { name: 'Consumption last week', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
+            common: {
+                name: 'Consumption last week',
+                type: 'number',
+                role: 'value.energy',
+                read: true,
+                write: false,
+                def: 0,
+                unit: 'kWh',
+            },
         });
         await this.extendObject('statistics.lastWeekFeedIn', {
             type: 'state',
@@ -285,7 +349,15 @@ class PvNotifications extends utils.Adapter {
         });
         await this.extendObject('statistics.lastWeekGridPower', {
             type: 'state',
-            common: { name: 'Grid power last week', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
+            common: {
+                name: 'Grid power last week',
+                type: 'number',
+                role: 'value.energy',
+                read: true,
+                write: false,
+                def: 0,
+                unit: 'kWh',
+            },
         });
         await this.setObjectNotExists('statistics.lastWeekFullCycles', {
             type: 'state',
@@ -1098,9 +1170,7 @@ class PvNotifications extends utils.Adapter {
 
         // Einheitlicher Status-Text für alle Intermediate-Stufen
         const statusText =
-            direction === 'up'
-                ? this.translate('Battery charging')
-                : this.translate('Battery discharging');
+            direction === 'up' ? this.translate('Battery charging') : this.translate('Battery discharging');
 
         // Einheitliche Nachricht für alle Stufen (20, 40, 60, 80)
         const batteryAt = this.translate('Battery at');
@@ -1508,19 +1578,21 @@ ${statusText}
             // Tägliche Statistik — entweder zur konfigurierten Zeit oder zum Sonnenuntergang
             if (this.config.statsUseSunset && this.config.statsSunsetObject) {
                 // Sonnenuntergangszeit aus dem konfigurierten Objekt lesen
-                this.getForeignStateAsync(this.config.statsSunsetObject).then(sunsetState => {
-                    if (sunsetState && sunsetState.val) {
-                        const sunsetTime = String(sunsetState.val).trim();
-                        const match = sunsetTime.match(/^(\d{1,2}):(\d{2})/);
-                        if (match) {
-                            const sunsetHours = parseInt(match[1], 10);
-                            const sunsetMinutes = parseInt(match[2], 10);
-                            if (hours === sunsetHours && minutes === sunsetMinutes) {
-                                this.sendDailyStatsMessage();
+                this.getForeignStateAsync(this.config.statsSunsetObject)
+                    .then(sunsetState => {
+                        if (sunsetState && sunsetState.val) {
+                            const sunsetTime = String(sunsetState.val).trim();
+                            const match = sunsetTime.match(/^(\d{1,2}):(\d{2})/);
+                            if (match) {
+                                const sunsetHours = parseInt(match[1], 10);
+                                const sunsetMinutes = parseInt(match[2], 10);
+                                if (hours === sunsetHours && minutes === sunsetMinutes) {
+                                    this.sendDailyStatsMessage();
+                                }
                             }
                         }
-                    }
-                }).catch(e => this.log.warn(`Could not read sunset object: ${e.message}`));
+                    })
+                    .catch(e => this.log.warn(`Could not read sunset object: ${e.message}`));
             } else {
                 const [dayHours, dayMinutes] = this.config.statsDayTime.split(':').map(Number);
                 if (hours === dayHours && minutes === dayMinutes) {
