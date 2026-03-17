@@ -44,7 +44,8 @@
     "dev": "dev-server watch default",
     "dev:run": "dev-server run default",
     "dev:debug": "dev-server debug default",
-    "dev-setup": "dev-server setup default"
+    "dev-setup": "dev-server setup default",
+    "dev-upload": "dev-server upload default"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.3.2"
