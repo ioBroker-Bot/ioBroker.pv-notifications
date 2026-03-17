@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.19",
+    "version": "1.2.20",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,18 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.20": {
+        "en": "Fix PR#5576: remove unused admin files, reduce info logs to debug, English state names with units, channel objects for statistics/info, button read:false, this.setInterval, translate fallback to English",
+        "de": "Fix PR#5576: ungenutzte Admin-Dateien entfernt, Info-Logs auf Debug reduziert, englische State-Namen mit Einheiten, Channel-Objekte fuer statistics/info, button read:false, this.setInterval, translate Fallback auf Englisch",
+        "ru": "Fix PR#5576: удалены неиспользуемые файлы admin, info-логи снижены до debug, английские имена states с единицами, channel-объекты для statistics/info, button read:false, this.setInterval, fallback translate на английский",
+        "fr": "Fix PR#5576: suppression fichiers admin inutiles, logs info reduits en debug, noms etats anglais avec unites, objets channel pour statistics/info, button read:false, this.setInterval, fallback translate en anglais",
+        "it": "Fix PR#5576: rimossi file admin inutilizzati, log info ridotti a debug, nomi stati inglesi con unita, oggetti channel per statistics/info, button read:false, this.setInterval, fallback translate in inglese",
+        "es": "Fix PR#5576: eliminados archivos admin no usados, logs info reducidos a debug, nombres estados ingles con unidades, objetos channel para statistics/info, button read:false, this.setInterval, fallback translate a ingles",
+        "pl": "Fix PR#5576: usunieto nieuzywane pliki admin, logi info zredukowane do debug, angielskie nazwy stanow z jednostkami, obiekty channel dla statistics/info, button read:false, this.setInterval, fallback translate na angielski",
+        "pt": "Fix PR#5576: removidos ficheiros admin nao usados, logs info reduzidos a debug, nomes estados ingles com unidades, objetos channel para statistics/info, button read:false, this.setInterval, fallback translate para ingles",
+        "nl": "Fix PR#5576: ongebruikte admin-bestanden verwijderd, info-logs teruggebracht naar debug, Engelse state-namen met eenheden, channel-objecten voor statistics/info, button read:false, this.setInterval, translate fallback naar Engels",
+        "zh-cn": "修复 PR#5576：删除未使用的 admin 文件，将 info 日志降级为 debug，英文 state 名称带单位，statistics/info 的 channel 对象，button read:false，this.setInterval，translate 回退到英文"
+      },
       "1.2.19": {
         "en": "Added v1.2.18 entry to news section in io-package.json",
         "de": "Eintrag v1.2.18 zur news-Sektion in io-package.json hinzugefügt",
@@ -106,19 +118,6 @@
         "pl": "Poprawiono formatowanie wiadomości pośrednich: Usunięto dodatkowy podział wiersza przed danymi pogodowymi",
         "uk": "Виправлено форматування проміжних повідомлень: видалено додатковий перенос рядка перед даними погоди",
         "zh-cn": "修复中间消息格式：删除天气数据前的额外换行符"
-      },
-      "1.2.13": {
-        "en": "Added current production (W) to test message, daily statistics and intermediate messages with improved layout",
-        "de": "Aktuelle Produktion (W) zu Test-Nachricht, Tagesstatistik und Zwischenmeldungen mit verbessertem Layout hinzugefügt",
-        "ru": "Добавлена текущая выработка (Вт) в тестовое сообщение, дневную статистику и промежуточные уведомления с улучшенным макетом",
-        "pt": "Adicionada produção atual (W) à mensagem de teste, estatísticas diárias e mensagens intermediárias com layout aprimorado",
-        "nl": "Huidige productie (W) toegevoegd aan testbericht, dagelijkse statistieken en intermediate-berichten met verbeterde lay-out",
-        "fr": "Ajout de la production actuelle (W) au message de test, statistiques quotidiennes et messages intermédiaires avec une mise en page améliorée",
-        "it": "Aggiunta produzione attuale (W) al messaggio di test, statistiche giornaliere e messaggi intermedi con layout migliorato",
-        "es": "Agregada producción actual (W) al mensaje de prueba, estadísticas diarias y mensajes intermedios con diseño mejorado",
-        "pl": "Dodano aktualną produkcję (W) do wiadomości testowej, statystyk dziennych i wiadomości pośrednich z ulepszonym układem",
-        "uk": "Додано поточне виробництво (Вт) до тестового повідомлення, денної статистики та проміжних повідомлень з покращеним макетом",
-        "zh-cn": "已添加当前发电量（W）到测试消息、每日统计和中间消息，并改进了布局"
       }
     },
     "authors": [
@@ -238,7 +237,7 @@
         "name": "Send test notification",
         "type": "boolean",
         "role": "button",
-        "read": true,
+        "read": false,
         "write": true,
         "def": false
       }

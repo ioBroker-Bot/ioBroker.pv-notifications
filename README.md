@@ -26,21 +26,6 @@ The following adapters are required for full functionality:
 | **sourceanalytix** | Statistics data (consumption, feed-in, grid power) | ✅ Yes |
 | **daswetter** or **openweathermap** | Weather forecast for recommendations | ❌ Optional |
 
-## Installation
-
-### Via ioBroker Admin (GitHub)
-
-```bash
-# In ioBroker Admin under "Adapter" → "Install custom adapter":
-https://github.com/sadam6752-tech/ioBroker.pv-notifications
-```
-
-### Via ioBroker CLI
-
-```bash
-iobroker url https://github.com/sadam6752-tech/ioBroker.pv-notifications
-```
-
 ## Configuration
 
 ### Telegram

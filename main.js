@@ -79,13 +79,13 @@ class PvNotifications extends utils.Adapter {
      * Is called when databases are connected and adapter received configuration.
      */
     async onReady() {
-        this.log.info('onReady is executing...');
+        this.log.debug('onReady is executing...');
 
         // Reset connection indicator
         await this.setState('info.connection', false, true);
 
         // Load system language
-        this.log.info('Loading system language...');
+        this.log.debug('Loading system language...');
         await this.loadSystemLanguage();
 
         this.log.info('PV Notifications Adapter started');
@@ -95,13 +95,13 @@ class PvNotifications extends utils.Adapter {
             this.config.weatherEnabled === true &&
             (this.config.weatherInIntermediate === undefined || this.config.weatherInIntermediate === null)
         ) {
-            this.log.info('Migration: Setting weatherInIntermediate to true (default)');
+            this.log.debug('Migration: Setting weatherInIntermediate to true (default)');
         }
         if (
             this.config.weatherEnabled === true &&
             (this.config.weatherInDailyStats === undefined || this.config.weatherInDailyStats === null)
         ) {
-            this.log.info('Migration: Setting weatherInDailyStats to true (default)');
+            this.log.debug('Migration: Setting weatherInDailyStats to true (default)');
         }
 
         // Log configuration
@@ -109,124 +109,134 @@ class PvNotifications extends utils.Adapter {
             `Configuration: Full=${this.config.thresholdFull}%, Empty=${this.config.thresholdEmpty}%, Intermediate=[${this.config.intermediateSteps}]`,
         );
 
+        // Create channel objects
+        await this.setObjectNotExists('statistics', { type: 'channel', common: { name: 'Statistics' }, native: {} });
+        await this.setObjectNotExists('info', { type: 'channel', common: { name: 'Info' }, native: {} });
+
         // Create statistics states
-        this.log.info('Creating statistics states...');
+        this.log.debug('Creating statistics states...');
         await this.setObjectNotExists('statistics.fullCyclesToday', {
             type: 'state',
-            common: { name: 'Vollzyklen heute', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Full cycles today', type: 'number', role: 'value', read: true, write: false, def: 0 },
         });
         await this.setObjectNotExists('statistics.emptyCyclesToday', {
             type: 'state',
-            common: { name: 'Leerzyklen heute', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Empty cycles today', type: 'number', role: 'value', read: true, write: false, def: 0 },
         });
         await this.setObjectNotExists('statistics.maxSOCToday', {
             type: 'state',
-            common: { name: 'Max SOC heute', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Max SOC today', type: 'number', role: 'value.battery', read: true, write: false, def: 0, unit: '%' },
         });
         await this.setObjectNotExists('statistics.minSOCToday', {
             type: 'state',
-            common: { name: 'Min SOC heute', type: 'number', role: 'value', read: true, write: false, def: 100 },
+            common: { name: 'Min SOC today', type: 'number', role: 'value.battery', read: true, write: false, def: 100, unit: '%' },
         });
         await this.setObjectNotExists('statistics.fullCyclesWeek', {
             type: 'state',
-            common: { name: 'Vollzyklen diese Woche', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Full cycles this week', type: 'number', role: 'value', read: true, write: false, def: 0 },
         });
         await this.setObjectNotExists('statistics.emptyCyclesWeek', {
             type: 'state',
-            common: { name: 'Leerzyklen diese Woche', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Empty cycles this week', type: 'number', role: 'value', read: true, write: false, def: 0 },
         });
         await this.setObjectNotExists('statistics.currentSOC', {
             type: 'state',
-            common: { name: 'Aktueller SOC', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Current SOC', type: 'number', role: 'value.battery', read: true, write: false, def: 0, unit: '%' },
         });
         await this.setObjectNotExists('statistics.currentEnergyKWh', {
             type: 'state',
             common: {
-                name: 'Aktuelle Energie in kWh',
+                name: 'Current energy',
                 type: 'number',
-                role: 'value',
+                role: 'value.energy',
                 read: true,
                 write: false,
                 def: 0,
+                unit: 'kWh',
             },
         });
         await this.setObjectNotExists('statistics.currentPower', {
             type: 'state',
-            common: { name: 'Aktuelle Leistung W', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Current power', type: 'number', role: 'value.power', read: true, write: false, def: 0, unit: 'W' },
         });
         await this.setObjectNotExists('statistics.currentTotalProduction', {
             type: 'state',
             common: {
-                name: 'Gesamtproduktion heute kWh',
+                name: 'Total production today',
                 type: 'number',
-                role: 'value',
+                role: 'value.energy',
                 read: true,
                 write: false,
                 def: 0,
+                unit: 'kWh',
             },
         });
         await this.setObjectNotExists('statistics.currentFeedIn', {
             type: 'state',
-            common: { name: 'Einspeisung heute kWh', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Feed-in today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
         await this.setObjectNotExists('statistics.currentConsumption', {
             type: 'state',
-            common: { name: 'Verbrauch heute kWh', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Consumption today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
         await this.setObjectNotExists('statistics.currentGridPower', {
             type: 'state',
-            common: { name: 'Netzbezug heute kWh', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Grid power today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
 
         // States für letzte Monats-/Wochenstatistik
         await this.setObjectNotExists('statistics.lastMonthProduction', {
             type: 'state',
             common: {
-                name: 'Produktion letzter Monat',
+                name: 'Production last month',
                 type: 'number',
-                role: 'value',
+                role: 'value.energy',
                 read: true,
                 write: false,
                 def: 0,
+                unit: 'kWh',
             },
         });
         await this.setObjectNotExists('statistics.lastMonthConsumption', {
             type: 'state',
             common: {
-                name: 'Verbrauch letzter Monat',
+                name: 'Consumption last month',
                 type: 'number',
-                role: 'value',
+                role: 'value.energy',
                 read: true,
                 write: false,
                 def: 0,
+                unit: 'kWh',
             },
         });
         await this.setObjectNotExists('statistics.lastMonthFeedIn', {
             type: 'state',
             common: {
-                name: 'Einspeisung letzter Monat',
+                name: 'Feed-in last month',
                 type: 'number',
-                role: 'value',
+                role: 'value.energy',
                 read: true,
                 write: false,
                 def: 0,
+                unit: 'kWh',
             },
         });
         await this.setObjectNotExists('statistics.lastMonthGridPower', {
             type: 'state',
             common: {
-                name: 'Netzbezug letzter Monat',
+                name: 'Grid power last month',
                 type: 'number',
-                role: 'value',
+                role: 'value.energy',
                 read: true,
                 write: false,
                 def: 0,
+                unit: 'kWh',
             },
         });
         await this.setObjectNotExists('statistics.lastMonthFullCycles', {
             type: 'state',
             common: {
-                name: 'Vollzyklen letzter Monat',
+                name: 'Full cycles last month',
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -237,7 +247,7 @@ class PvNotifications extends utils.Adapter {
         await this.setObjectNotExists('statistics.lastMonthEmptyCycles', {
             type: 'state',
             common: {
-                name: 'Leerzyklen letzter Monat',
+                name: 'Empty cycles last month',
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -248,37 +258,39 @@ class PvNotifications extends utils.Adapter {
         await this.setObjectNotExists('statistics.lastWeekProduction', {
             type: 'state',
             common: {
-                name: 'Produktion letzte Woche',
+                name: 'Production last week',
                 type: 'number',
-                role: 'value',
+                role: 'value.energy',
                 read: true,
                 write: false,
                 def: 0,
+                unit: 'kWh',
             },
         });
         await this.setObjectNotExists('statistics.lastWeekConsumption', {
             type: 'state',
-            common: { name: 'Verbrauch letzte Woche', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Consumption last week', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
         await this.setObjectNotExists('statistics.lastWeekFeedIn', {
             type: 'state',
             common: {
-                name: 'Einspeisung letzte Woche',
+                name: 'Feed-in last week',
                 type: 'number',
-                role: 'value',
+                role: 'value.energy',
                 read: true,
                 write: false,
                 def: 0,
+                unit: 'kWh',
             },
         });
         await this.setObjectNotExists('statistics.lastWeekGridPower', {
             type: 'state',
-            common: { name: 'Netzbezug letzte Woche', type: 'number', role: 'value', read: true, write: false, def: 0 },
+            common: { name: 'Grid power last week', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
         await this.setObjectNotExists('statistics.lastWeekFullCycles', {
             type: 'state',
             common: {
-                name: 'Vollzyklen letzte Woche',
+                name: 'Full cycles last week',
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -289,7 +301,7 @@ class PvNotifications extends utils.Adapter {
         await this.setObjectNotExists('statistics.lastWeekEmptyCycles', {
             type: 'state',
             common: {
-                name: 'Leerzyklen letzte Woche',
+                name: 'Empty cycles last week',
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -302,10 +314,10 @@ class PvNotifications extends utils.Adapter {
         await this.setObjectNotExists('testButton', {
             type: 'state',
             common: {
-                name: 'Test-Benachrichtigung senden',
+                name: 'Send test notification',
                 type: 'boolean',
                 role: 'button',
-                read: true,
+                read: false,
                 write: true,
                 def: false,
             },
@@ -313,7 +325,7 @@ class PvNotifications extends utils.Adapter {
 
         // Explicitly subscribe (for js-controller 7+)
         this.subscribeStates('testButton');
-        this.log.info('Subscription for testButton created');
+        this.log.debug('Subscription for testButton created');
 
         await this.setObjectNotExists('info.connection', {
             type: 'state',
@@ -331,7 +343,7 @@ class PvNotifications extends utils.Adapter {
         if (this.config.batterySOC) {
             // Use subscribeForeignStates for external states
             this.subscribeForeignStates(this.config.batterySOC);
-            this.log.info(`Subscription for ${this.config.batterySOC} created (foreign)`);
+            this.log.debug(`Subscription for ${this.config.batterySOC} created (foreign)`);
         }
 
         // Create subscriptions for all data points
@@ -361,7 +373,7 @@ class PvNotifications extends utils.Adapter {
 
         // Re-subscribe all states after all subscriptions
         this.subscribeStates('*');
-        this.log.info('All states subscribed (*)');
+        this.log.debug('All states subscribed (*)');
 
         // Start scheduled tasks
         this.startScheduledTasks();
@@ -378,7 +390,7 @@ class PvNotifications extends utils.Adapter {
         // Signal that adapter is ready
         this.setState('info.connection', true, true);
         this.log.info('PV Notifications Adapter is ready');
-        this.log.info(`Adapter namespace: ${this.namespace}`);
+        this.log.debug(`Adapter namespace: ${this.namespace}`);
     }
 
     /**
@@ -469,7 +481,7 @@ class PvNotifications extends utils.Adapter {
             this.stats.lastMonthEmptyCycles =
                 lastMonthEmptyCycles && lastMonthEmptyCycles.val !== null ? lastMonthEmptyCycles.val : 0;
 
-            this.log.info('Statistics loaded from states');
+            this.log.debug('Statistics loaded from states');
         } catch (e) {
             this.log.error(`Error loading statistics: ${e.message}`);
         }
@@ -480,14 +492,14 @@ class PvNotifications extends utils.Adapter {
      */
     async refreshCurrentValues() {
         try {
-            this.log.info('Refreshing current values...');
+            this.log.debug('Refreshing current values...');
 
             // Read and process SOC (using getForeignStateAsync for external states)
             if (this.config.batterySOC) {
-                this.log.info(`Reading SOC from ${this.config.batterySOC}...`);
+                this.log.debug(`Reading SOC from ${this.config.batterySOC}...`);
                 const socState = await this.getForeignStateAsync(this.config.batterySOC);
                 if (socState && socState.val !== null) {
-                    this.log.info(`SOC read: ${socState.val}%`);
+                    this.log.debug(`SOC read: ${socState.val}%`);
                     this.onBatterySOCChange(socState.val);
                 } else {
                     this.log.warn('SOC state is null or undefined');
@@ -512,7 +524,7 @@ class PvNotifications extends utils.Adapter {
                     }
                 }
             }
-            this.log.info('Current values updated');
+            this.log.debug('Current values updated');
         } catch (e) {
             this.log.error(`Error updating values: ${e.message}`);
         }
@@ -561,8 +573,8 @@ class PvNotifications extends utils.Adapter {
                 // Only when set to true and not already running
                 if (state.val === true && !this.status.testMessageRunning) {
                     this.status.testMessageRunning = true; // Set flag
-                    this.log.info(`Test button state received: ${id}, val=${state.val}`);
-                    this.log.info('Test button was pressed');
+                    this.log.debug(`Test button state received: ${id}, val=${state.val}`);
+                    this.log.debug('Test button was pressed');
                     await this.sendTestMessage();
                     // Reset state
                     await this.setStateAsync('testButton', false, true);
@@ -720,7 +732,7 @@ class PvNotifications extends utils.Adapter {
                             this.sendTelegram(message);
                             this.status.intermediateNotified.push(step);
                             this.status.lastNotification.intermediate = Date.now();
-                            this.log.info(`Intermediate ${step}% - Telegram gesendet`);
+                            this.log.info(`Intermediate ${step}% - Telegram sent`);
                         }
                         break;
                     }
@@ -846,7 +858,7 @@ class PvNotifications extends utils.Adapter {
                         if (result && result.error) {
                             this.log.error(`Telegram error: ${result.error}`);
                         } else {
-                            this.log.info(fullMessage);
+                            this.log.debug(fullMessage);
                             this.log.info(`Telegram sent successfully to: ${usersList.join(', ')}`);
                         }
                     },
@@ -1087,12 +1099,8 @@ class PvNotifications extends utils.Adapter {
         // Einheitlicher Status-Text für alle Intermediate-Stufen
         const statusText =
             direction === 'up'
-                ? this.systemLang === 'ru'
-                    ? '✅ Батарея заряжается'
-                    : '✅ Battery charging'
-                : this.systemLang === 'ru'
-                  ? '⚠️ Батарея разряжается'
-                  : '⚠️ Battery discharging';
+                ? this.translate('Battery charging')
+                : this.translate('Battery discharging');
 
         // Einheitliche Nachricht für alle Stufen (20, 40, 60, 80)
         const batteryAt = this.translate('Battery at');
@@ -1143,7 +1151,7 @@ ${statusText}
                     if (weatherTodayText || weatherTodayTemp) {
                         const weatherDesc = weatherTodayText ? this.getWeatherDescription(weatherTodayText) : '🌡️';
                         message += `\n🌤️ ${this.translate('Weather today')}: ${weatherDesc}${todayTempText}`;
-                        this.log.info(`Weather today added to intermediate message: ${weatherDesc}${todayTempText}`);
+                        this.log.debug(`Weather today added to intermediate message: ${weatherDesc}${todayTempText}`);
                     }
                 }
 
@@ -1173,7 +1181,7 @@ ${statusText}
                     if (weatherText) {
                         const weatherDesc = this.getWeatherDescription(weatherText);
                         message += `\n🌤️ ${this.translate('Weather tomorrow')}: ${weatherDesc}${tempText}`;
-                        this.log.info(`Weather tomorrow added to intermediate message: ${weatherDesc}${tempText}`);
+                        this.log.debug(`Weather tomorrow added to intermediate message: ${weatherDesc}${tempText}`);
                     }
                 }
             } catch (e) {
@@ -1481,7 +1489,7 @@ ${statusText}
      */
     startScheduledTasks() {
         // Check every minute
-        this.scheduledInterval = setInterval(() => {
+        this.scheduledInterval = this.setInterval(() => {
             const now = new Date();
             const hours = now.getHours();
             const minutes = now.getMinutes();
@@ -1820,12 +1828,27 @@ ${statusText}
                 en: 'If there are many cycles, check battery settings',
                 ru: 'При большом количестве циклов проверьте настройки батареи',
             },
+            'Battery charging': {
+                de: '✅ Batterie lädt',
+                en: '✅ Battery charging',
+                ru: '✅ Батарея заряжается',
+            },
+            'Battery discharging': {
+                de: '⚠️ Batterie entlädt',
+                en: '⚠️ Battery discharging',
+                ru: '⚠️ Батарея разряжается',
+            },
+            'Production last week': {
+                de: 'Produktion letzte Woche',
+                en: 'Production last week',
+                ru: 'Производство на прошлой неделе',
+            },
         };
 
         if (translations[key] && translations[key][this.systemLang]) {
             return translations[key][this.systemLang];
         }
-        return (translations[key] && translations[key]['de']) || key;
+        return (translations[key] && translations[key]['en']) || key;
     }
 
     /**
@@ -1984,7 +2007,7 @@ ${statusText}
 
             // Clear interval timer
             if (this.scheduledInterval) {
-                clearInterval(this.scheduledInterval);
+                this.clearInterval(this.scheduledInterval);
                 this.scheduledInterval = null;
             }
 
