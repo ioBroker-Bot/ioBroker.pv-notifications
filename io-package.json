@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.22",
+    "version": "1.2.23",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,18 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.23": {
+        "en": "Fix statistics section layout: align daily time, sunset checkbox and sunset object on one row",
+        "de": "Layout der Statistik-Sektion korrigiert: Tageszeit, Sonnenuntergang-Checkbox und Objekt in einer Zeile",
+        "ru": "Исправлен макет секции статистики: время, чекбокс заката и объект в одну строку",
+        "fr": "Correction mise en page section statistiques: heure, case coucher soleil et objet sur une ligne",
+        "it": "Correzione layout sezione statistiche: ora, checkbox tramonto e oggetto su una riga",
+        "es": "Correccion diseno seccion estadisticas: hora, casilla atardecer y objeto en una fila",
+        "pl": "Poprawka ukladu sekcji statystyk: czas, pole zachodu slonca i obiekt w jednym wierszu",
+        "pt": "Correcao layout seccao estatisticas: hora, caixa por do sol e objeto numa linha",
+        "nl": "Lay-out statistieksectie gecorrigeerd: tijd, zonsondergang-checkbox en object op een rij",
+        "zh-cn": "修复统计部分布局：将时间、日落复选框和对象放在同一行"
+      },
       "1.2.22": {
         "en": "Add sunset-based daily statistics: optional checkbox to send daily stats at sunset time from a configurable object instead of fixed time",
         "de": "Sonnenuntergang-basierte Tagesstatistik: optionale Checkbox um Tagesstatistik zur Sonnenuntergangszeit aus einem konfigurierbaren Objekt zu senden statt zur festen Uhrzeit",
@@ -103,19 +115,6 @@
         "pl": "Usunięto stare wersje z common.news zgodnie z W1032 (maksymalnie 7 wersji)",
         "uk": "Видалено старі версії з common.news для відповідності W1032 (максимум 7 версій)",
         "zh-cn": "已从 common.news 中删除旧版本以符合 W1032（最多 7 个版本）"
-      },
-      "1.2.16": {
-        "en": "Removed empty line in battery full message for improved formatting",
-        "de": "Leere Zeile in Batterie VOLL Nachricht für bessere Formatierung entfernt",
-        "ru": "Удалена пустая строка в сообщении о полной батарее для улучшения форматирования",
-        "pt": "Removida linha vazia na mensagem de bateria cheia para melhor formatação",
-        "nl": "Lege regel verwijderd in batterij vol-bericht voor verbeterde opmaak",
-        "fr": "Suppression de la ligne vide dans le message batterie pleine pour un meilleur formatage",
-        "it": "Rimossa riga vuota nel messaggio di batteria piena per un migliore formattazione",
-        "es": "Eliminada línea vacía en el mensaje de batería llena para mejorar el formato",
-        "pl": "Usunięto pusty wiersz w wiadomości o pełnej baterii dla lepszej formatowania",
-        "uk": "Видалено порожній рядок у повідомленні про повну батарею для покращення форматування",
-        "zh-cn": "已删除电池满消息中的空行以改善格式"
       }
     },
     "authors": [
