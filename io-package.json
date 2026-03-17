@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.20",
+    "version": "1.2.21",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,18 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.21": {
+        "en": "Fix: use extendObject instead of setObjectNotExists for states with unit/role to update existing instances",
+        "de": "Fix: extendObject statt setObjectNotExists fuer States mit unit/role, um bestehende Instanzen zu aktualisieren",
+        "ru": "Fix: extendObject вместо setObjectNotExists для states с unit/role, чтобы обновить существующие инстанции",
+        "fr": "Fix: extendObject au lieu de setObjectNotExists pour les states avec unit/role afin de mettre a jour les instances existantes",
+        "it": "Fix: extendObject invece di setObjectNotExists per states con unit/role per aggiornare le istanze esistenti",
+        "es": "Fix: extendObject en lugar de setObjectNotExists para states con unit/role para actualizar instancias existentes",
+        "pl": "Fix: extendObject zamiast setObjectNotExists dla states z unit/role aby zaktualizowac istniejace instancje",
+        "pt": "Fix: extendObject em vez de setObjectNotExists para states com unit/role para atualizar instancias existentes",
+        "nl": "Fix: extendObject in plaats van setObjectNotExists voor states met unit/role om bestaande instanties bij te werken",
+        "zh-cn": "修复：对带有 unit/role 的 state 使用 extendObject 而非 setObjectNotExists，以更新现有实例"
+      },
       "1.2.20": {
         "en": "Fix PR#5576: remove unused admin files, reduce info logs to debug, English state names with units, channel objects for statistics/info, button read:false, this.setInterval, translate fallback to English",
         "de": "Fix PR#5576: ungenutzte Admin-Dateien entfernt, Info-Logs auf Debug reduziert, englische State-Namen mit Einheiten, Channel-Objekte fuer statistics/info, button read:false, this.setInterval, translate Fallback auf Englisch",
@@ -105,19 +117,6 @@
         "pl": "Dodano linie oddzielające do wiadomości o pełnej/pustej baterii i pośrednich dla lepszej czytelności",
         "uk": "Додано розділювальні лінії до повідомлень про повну/порожню батарею та проміжних для покращення читабельності",
         "zh-cn": "已添加分隔线到电池满/空和中间消息以提高可读性"
-      },
-      "1.2.14": {
-        "en": "Fixed intermediate message formatting: Removed extra line break before weather data",
-        "de": "Intermediate-Nachricht formatiert: Zusätzlichen Zeilenumbruch vor Wetterdaten entfernt",
-        "ru": "Исправлено форматирование промежуточного сообщения: удалён лишний перенос строки перед данными погоды",
-        "pt": "Corrigida formatação da mensagem intermediária: Removida quebra de linha extra antes dos dados meteorológicos",
-        "nl": "Formattering tussentijds bericht gecorrigeerd: extra regeleis voor weergegevens verwijderd",
-        "fr": "Correction du formatage des messages intermédiaires: suppression du saut de ligne supplémentaire avant les données météo",
-        "it": "Corretta formattazione messaggio intermedio: rimossa interruzione di riga extra prima dei dati meteo",
-        "es": "Corregido formato de mensaje intermedio: Eliminada salto de línea adicional antes de datos meteorológicos",
-        "pl": "Poprawiono formatowanie wiadomości pośrednich: Usunięto dodatkowy podział wiersza przed danymi pogodowymi",
-        "uk": "Виправлено форматування проміжних повідомлень: видалено додатковий перенос рядка перед даними погоди",
-        "zh-cn": "修复中间消息格式：删除天气数据前的额外换行符"
       }
     },
     "authors": [
@@ -272,10 +271,11 @@
       "common": {
         "name": "Max SOC today",
         "type": "number",
-        "role": "value",
+        "role": "value.battery",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "%"
       }
     },
     {
@@ -284,10 +284,11 @@
       "common": {
         "name": "Min SOC today",
         "type": "number",
-        "role": "value",
+        "role": "value.battery",
         "read": true,
         "write": false,
-        "def": 100
+        "def": 100,
+        "unit": "%"
       }
     },
     {
@@ -320,10 +321,11 @@
       "common": {
         "name": "Current SOC",
         "type": "number",
-        "role": "value",
+        "role": "value.battery",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "%"
       }
     },
     {
@@ -332,10 +334,11 @@
       "common": {
         "name": "Current energy in kWh",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {
@@ -344,10 +347,11 @@
       "common": {
         "name": "Production last month",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {
@@ -356,10 +360,11 @@
       "common": {
         "name": "Consumption last month",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {
@@ -368,10 +373,11 @@
       "common": {
         "name": "Feed-in last month",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {
@@ -380,10 +386,11 @@
       "common": {
         "name": "Grid power last month",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {
@@ -416,10 +423,11 @@
       "common": {
         "name": "Production last week",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {
@@ -428,10 +436,11 @@
       "common": {
         "name": "Consumption last week",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {
@@ -440,10 +449,11 @@
       "common": {
         "name": "Feed-in last week",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {
@@ -452,10 +462,11 @@
       "common": {
         "name": "Grid power last week",
         "type": "number",
-        "role": "value",
+        "role": "value.energy",
         "read": true,
         "write": false,
-        "def": 0
+        "def": 0,
+        "unit": "kWh"
       }
     },
     {

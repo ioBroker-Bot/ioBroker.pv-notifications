@@ -123,11 +123,11 @@ class PvNotifications extends utils.Adapter {
             type: 'state',
             common: { name: 'Empty cycles today', type: 'number', role: 'value', read: true, write: false, def: 0 },
         });
-        await this.setObjectNotExists('statistics.maxSOCToday', {
+        await this.extendObject('statistics.maxSOCToday', {
             type: 'state',
             common: { name: 'Max SOC today', type: 'number', role: 'value.battery', read: true, write: false, def: 0, unit: '%' },
         });
-        await this.setObjectNotExists('statistics.minSOCToday', {
+        await this.extendObject('statistics.minSOCToday', {
             type: 'state',
             common: { name: 'Min SOC today', type: 'number', role: 'value.battery', read: true, write: false, def: 100, unit: '%' },
         });
@@ -139,11 +139,11 @@ class PvNotifications extends utils.Adapter {
             type: 'state',
             common: { name: 'Empty cycles this week', type: 'number', role: 'value', read: true, write: false, def: 0 },
         });
-        await this.setObjectNotExists('statistics.currentSOC', {
+        await this.extendObject('statistics.currentSOC', {
             type: 'state',
             common: { name: 'Current SOC', type: 'number', role: 'value.battery', read: true, write: false, def: 0, unit: '%' },
         });
-        await this.setObjectNotExists('statistics.currentEnergyKWh', {
+        await this.extendObject('statistics.currentEnergyKWh', {
             type: 'state',
             common: {
                 name: 'Current energy',
@@ -155,11 +155,11 @@ class PvNotifications extends utils.Adapter {
                 unit: 'kWh',
             },
         });
-        await this.setObjectNotExists('statistics.currentPower', {
+        await this.extendObject('statistics.currentPower', {
             type: 'state',
             common: { name: 'Current power', type: 'number', role: 'value.power', read: true, write: false, def: 0, unit: 'W' },
         });
-        await this.setObjectNotExists('statistics.currentTotalProduction', {
+        await this.extendObject('statistics.currentTotalProduction', {
             type: 'state',
             common: {
                 name: 'Total production today',
@@ -171,21 +171,21 @@ class PvNotifications extends utils.Adapter {
                 unit: 'kWh',
             },
         });
-        await this.setObjectNotExists('statistics.currentFeedIn', {
+        await this.extendObject('statistics.currentFeedIn', {
             type: 'state',
             common: { name: 'Feed-in today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
-        await this.setObjectNotExists('statistics.currentConsumption', {
+        await this.extendObject('statistics.currentConsumption', {
             type: 'state',
             common: { name: 'Consumption today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
-        await this.setObjectNotExists('statistics.currentGridPower', {
+        await this.extendObject('statistics.currentGridPower', {
             type: 'state',
             common: { name: 'Grid power today', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
 
         // States für letzte Monats-/Wochenstatistik
-        await this.setObjectNotExists('statistics.lastMonthProduction', {
+        await this.extendObject('statistics.lastMonthProduction', {
             type: 'state',
             common: {
                 name: 'Production last month',
@@ -197,7 +197,7 @@ class PvNotifications extends utils.Adapter {
                 unit: 'kWh',
             },
         });
-        await this.setObjectNotExists('statistics.lastMonthConsumption', {
+        await this.extendObject('statistics.lastMonthConsumption', {
             type: 'state',
             common: {
                 name: 'Consumption last month',
@@ -209,7 +209,7 @@ class PvNotifications extends utils.Adapter {
                 unit: 'kWh',
             },
         });
-        await this.setObjectNotExists('statistics.lastMonthFeedIn', {
+        await this.extendObject('statistics.lastMonthFeedIn', {
             type: 'state',
             common: {
                 name: 'Feed-in last month',
@@ -221,7 +221,7 @@ class PvNotifications extends utils.Adapter {
                 unit: 'kWh',
             },
         });
-        await this.setObjectNotExists('statistics.lastMonthGridPower', {
+        await this.extendObject('statistics.lastMonthGridPower', {
             type: 'state',
             common: {
                 name: 'Grid power last month',
@@ -255,7 +255,7 @@ class PvNotifications extends utils.Adapter {
                 def: 0,
             },
         });
-        await this.setObjectNotExists('statistics.lastWeekProduction', {
+        await this.extendObject('statistics.lastWeekProduction', {
             type: 'state',
             common: {
                 name: 'Production last week',
@@ -267,11 +267,11 @@ class PvNotifications extends utils.Adapter {
                 unit: 'kWh',
             },
         });
-        await this.setObjectNotExists('statistics.lastWeekConsumption', {
+        await this.extendObject('statistics.lastWeekConsumption', {
             type: 'state',
             common: { name: 'Consumption last week', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
-        await this.setObjectNotExists('statistics.lastWeekFeedIn', {
+        await this.extendObject('statistics.lastWeekFeedIn', {
             type: 'state',
             common: {
                 name: 'Feed-in last week',
@@ -283,7 +283,7 @@ class PvNotifications extends utils.Adapter {
                 unit: 'kWh',
             },
         });
-        await this.setObjectNotExists('statistics.lastWeekGridPower', {
+        await this.extendObject('statistics.lastWeekGridPower', {
             type: 'state',
             common: { name: 'Grid power last week', type: 'number', role: 'value.energy', read: true, write: false, def: 0, unit: 'kWh' },
         });
