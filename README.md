@@ -329,6 +329,27 @@ sadam6752@gmail.com
 	### **WORK IN PROGRESS**
 -->
 
+### 1.2.24 (2026-03-17)
+* (FIX) Added missing uk translations to news entries, fixed prettier formatting in main.js
+
+### 1.2.23 (2026-03-17)
+* (FIX) Statistics section layout: daily time, sunset checkbox and sunset object aligned on one row
+
+### 1.2.22 (2026-03-17)
+* (ADD) Sunset-based daily statistics: optional checkbox to send daily stats at sunset time from a configurable object instead of fixed time
+
+### 1.2.21 (2026-03-17)
+* (FIX) Use extendObject instead of setObjectNotExists for states with unit/role to update existing instances
+
+### 1.2.20 (2026-03-17)
+* (FIX) PR#5576: remove unused admin files, reduce info logs to debug, English state names with units, channel objects for statistics/info, button read:false, this.setInterval, translate fallback to English
+
+### 1.2.19 (2026-03-16)
+* (FIX) Added v1.2.18 entry to news section in io-package.json
+
+### 1.2.18 (2026-03-16)
+* (FIX) Missing await in onBatterySOCChange, null-check in buildTestMessage, safe intermediateSteps parsing, remove dead code
+
 ### 1.2.17 (2026-03-15)
 * (FIX) Removed old versions from common.news to comply with W1032 (maximum 7 versions)
 
