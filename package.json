@@ -1,6 +1,6 @@
 {
   "name": "iobroker.pv-notifications",
-  "version": "1.2.21",
+  "version": "1.2.22",
   "description": "PV-Anlage Batterie-Status Telegram Benachrichtigungen",
   "author": {
     "name": "Alex1808 via LLM: Qwen",
@@ -40,7 +40,11 @@
     "lint": "eslint -c eslint.config.mjs .",
     "lint:fix": "eslint -c eslint.config.mjs . --fix",
     "translate": "translate-adapter",
-    "release": "release-script"
+    "release": "release-script",
+    "dev": "dev-server watch default",
+    "dev:run": "dev-server run default",
+    "dev:debug": "dev-server debug default",
+    "dev-setup": "dev-server setup default"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.3.2"
@@ -54,7 +58,8 @@
     "@iobroker/eslint-config": "^2.2.0",
     "@iobroker/testing": "^5.2.2",
     "@types/node": "^25.5.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "@iobroker/dev-server": "^0.8.0"
   },
   "bugs": {
     "url": "https://github.com/alex/iobroker.pv-notifications/issues"

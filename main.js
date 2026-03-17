@@ -1505,10 +1505,27 @@ ${statusText}
                 this.resetMonthlyStats();
             }
 
-            // Tägliche Statistik zur konfigurierten Zeit
-            const [dayHours, dayMinutes] = this.config.statsDayTime.split(':').map(Number);
-            if (hours === dayHours && minutes === dayMinutes) {
-                this.sendDailyStatsMessage();
+            // Tägliche Statistik — entweder zur konfigurierten Zeit oder zum Sonnenuntergang
+            if (this.config.statsUseSunset && this.config.statsSunsetObject) {
+                // Sonnenuntergangszeit aus dem konfigurierten Objekt lesen
+                this.getForeignStateAsync(this.config.statsSunsetObject).then(sunsetState => {
+                    if (sunsetState && sunsetState.val) {
+                        const sunsetTime = String(sunsetState.val).trim();
+                        const match = sunsetTime.match(/^(\d{1,2}):(\d{2})/);
+                        if (match) {
+                            const sunsetHours = parseInt(match[1], 10);
+                            const sunsetMinutes = parseInt(match[2], 10);
+                            if (hours === sunsetHours && minutes === sunsetMinutes) {
+                                this.sendDailyStatsMessage();
+                            }
+                        }
+                    }
+                }).catch(e => this.log.warn(`Could not read sunset object: ${e.message}`));
+            } else {
+                const [dayHours, dayMinutes] = this.config.statsDayTime.split(':').map(Number);
+                if (hours === dayHours && minutes === dayMinutes) {
+                    this.sendDailyStatsMessage();
+                }
             }
 
             // Wöchentliche Statistik am konfigurierten Tag und Zeit

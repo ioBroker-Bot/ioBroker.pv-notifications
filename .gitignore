@@ -71,3 +71,7 @@ dist/
 
 # Release script
 .commitinfo
+
+
+# ioBroker dev-server
+.dev-server/

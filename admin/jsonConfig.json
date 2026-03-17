@@ -384,6 +384,28 @@
       "xl": 4,
       "tooltip": "tooltip_statsDayTime"
     },
+    "statsUseSunset": {
+      "type": "checkbox",
+      "label": "label_statsUseSunset",
+      "xs": 12,
+      "sm": 4,
+      "md": 4,
+      "lg": 4,
+      "xl": 4,
+      "default": false,
+      "tooltip": "tooltip_statsUseSunset"
+    },
+    "statsSunsetObject": {
+      "type": "objectId",
+      "label": "label_statsSunsetObject",
+      "xs": 12,
+      "sm": 8,
+      "md": 8,
+      "lg": 8,
+      "xl": 8,
+      "tooltip": "tooltip_statsSunsetObject",
+      "disabled": "!statsUseSunset"
+    },
     "statsWeekDay": {
       "type": "number",
       "label": "label_statsWeekDay",
