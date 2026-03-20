@@ -303,7 +303,7 @@ Between **12:00 and 15:00** (configurable), **all** notifications are suppressed
 
 MIT License
 
-Copyright (c) 2025-2026  sadam6752-tech    sadam6752@gmail.com  
+Copyright (c) 2025-2026 Alex1808 via LLM: Qwen sadam6752@gmail.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -342,7 +342,7 @@ sadam6752@gmail.com
 * (FIX) Use extendObject instead of setObjectNotExists for states with unit/role to update existing instances
 
 ### 1.2.20 (2026-03-17)
-* (FIX) PR#5576: remove unused admin files, reduce info logs to debug, English state names with units, channel objects for statistics/info, button read:false, this.setInterval, translate fallback to English
+* (FIX) Remove unused admin files, reduce info logs to debug, English state names with units, channel objects for statistics/info, button read:false, this.setInterval, translate fallback to English
 
 ### 1.2.19 (2026-03-16)
 * (FIX) Added v1.2.18 entry to news section in io-package.json
