@@ -1,5 +1,7 @@
 # ioBroker PV Notifications Adapter
 
+![Logo](admin/pv-notifications.png)
+
 Sends Telegram notifications for PV battery status (full, empty, intermediate levels).
 
 ## Features
