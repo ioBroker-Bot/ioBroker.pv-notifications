@@ -11,6 +11,8 @@
   "label_totalProduction": "今日总发电量 (kWh)",
   "label_feedIn": "今日馈电量 (kWh)",
   "label_consumption": "今日家庭用电量 (kWh)",
+  "label_currentConsumptionPower": "当前家庭功耗 (W)",
+  "tooltip_currentConsumptionPower": "瞬时功耗，单位为 W（实时值）。用于电池状态消息（满/空）中的当前用电量。如果为空，则使用光伏功率减去馈电作为备用值。",
   "label_gridPower": "今日电网用电量 (kWh)",
   "label_weeklyProduction": "本周发电量 (kWh)",
   "tooltip_weeklyProduction": "sourceanalytix...Production.currentWeek",

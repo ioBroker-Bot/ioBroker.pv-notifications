@@ -11,6 +11,8 @@
   "label_totalProduction": "Produzione Totale Oggi (kWh)",
   "label_feedIn": "Immissione Oggi (kWh)",
   "label_consumption": "Consumo Casa Oggi (kWh)",
+  "label_currentConsumptionPower": "Consumo Attuale della Casa (W)",
+  "tooltip_currentConsumptionPower": "Consumo istantaneo in W (valore in tempo reale). Usato per il consumo attuale nei messaggi di stato della batteria (piena/vuota). Se vuoto, viene usata la potenza FV meno l'immissione come alternativa.",
   "label_gridPower": "Consumo Rete Oggi (kWh)",
   "label_weeklyProduction": "Produzione Questa Settimana (kWh)",
   "tooltip_weeklyProduction": "sourceanalytix...Production.currentWeek",

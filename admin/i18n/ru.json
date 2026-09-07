@@ -11,6 +11,8 @@
   "label_totalProduction": "Общее производство сегодня (кВт⋅ч)",
   "label_feedIn": "Подача в сеть сегодня (кВт⋅ч)",
   "label_consumption": "Потребление дома сегодня (кВт⋅ч)",
+  "label_currentConsumptionPower": "Текущее потребление дома (Вт)",
+  "tooltip_currentConsumptionPower": "Мгновенное потребление в Вт (значение в реальном времени). Используется для текущего потребления в сообщениях о состоянии батареи (полная/пустая). Если не указано, вместо этого используется мощность PV минус подача в сеть.",
   "label_gridPower": "Потребление из сети сегодня (кВт⋅ч)",
   "label_weeklyProduction": "Производство на этой неделе (кВт⋅ч)",
   "tooltip_weeklyProduction": "sourceanalytix...Produktion.currentWeek",

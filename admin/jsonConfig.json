@@ -84,6 +84,16 @@
       "lg": 6,
       "xl": 6
     },
+    "currentConsumptionPower": {
+      "type": "objectId",
+      "label": "label_currentConsumptionPower",
+      "xs": 12,
+      "sm": 6,
+      "md": 6,
+      "lg": 6,
+      "xl": 6,
+      "tooltip": "tooltip_currentConsumptionPower"
+    },
     "gridPower": {
       "type": "objectId",
       "label": "label_gridPower",

@@ -191,6 +191,18 @@ class PvNotifications extends utils.Adapter {
                 unit: 'W',
             },
         });
+        await this.extendObject('statistics.currentConsumptionPower', {
+            type: 'state',
+            common: {
+                name: 'Current consumption power',
+                type: 'number',
+                role: 'value.power',
+                read: true,
+                write: false,
+                def: 0,
+                unit: 'W',
+            },
+        });
         await this.extendObject('statistics.currentTotalProduction', {
             type: 'state',
             common: {
@@ -424,6 +436,7 @@ class PvNotifications extends utils.Adapter {
             this.config.totalProduction,
             this.config.feedIn,
             this.config.consumption,
+            this.config.currentConsumptionPower,
             this.config.gridPower,
             this.config.weeklyProduction,
             this.config.weeklyConsumption,
@@ -475,6 +488,7 @@ class PvNotifications extends utils.Adapter {
             { name: 'Total Production', id: this.config.totalProduction },
             { name: 'Feed In', id: this.config.feedIn },
             { name: 'Consumption', id: this.config.consumption },
+            { name: 'Current Consumption Power', id: this.config.currentConsumptionPower },
             { name: 'Grid Power', id: this.config.gridPower },
         ];
 
@@ -585,6 +599,7 @@ class PvNotifications extends utils.Adapter {
                 { config: this.config.totalProduction, state: 'statistics.currentTotalProduction' },
                 { config: this.config.feedIn, state: 'statistics.currentFeedIn' },
                 { config: this.config.consumption, state: 'statistics.currentConsumption' },
+                { config: this.config.currentConsumptionPower, state: 'statistics.currentConsumptionPower' },
                 { config: this.config.gridPower, state: 'statistics.currentGridPower' },
             ];
 
@@ -674,6 +689,10 @@ class PvNotifications extends utils.Adapter {
                 if (id === this.config.consumption) {
                     await this.setStateAsync('statistics.currentConsumption', state.val, true);
                     this.log.debug(`Updated currentConsumption: ${state.val}`);
+                }
+                if (id === this.config.currentConsumptionPower) {
+                    await this.setStateAsync('statistics.currentConsumptionPower', state.val, true);
+                    this.log.debug(`Updated currentConsumptionPower: ${state.val}`);
                 }
                 if (id === this.config.gridPower) {
                     await this.setStateAsync('statistics.currentGridPower', state.val, true);
@@ -952,6 +971,28 @@ class PvNotifications extends utils.Adapter {
     }
 
     /**
+     * Baue die Verbrauchs-Zeile für Batterie-Status-Meldungen (voll/leer).
+     *
+     * Wenn ein Datenpunkt für den momentanen Verbrauch (W) konfiguriert ist,
+     * wird dieser Live-Wert in W ausgegeben (Issue #74). Andernfalls kann kein
+     * korrekter momentaner W-Wert gebildet werden, daher wird der Tages-Verbrauch
+     * in kWh mit korrekter Einheit angezeigt (Fallback, rückwärtskompatibel).
+     *
+     * @param {number} consumptionKWh - Tages-Hausverbrauch in kWh (Fallback-Wert)
+     * @returns {Promise<string>} Formatierte Zeile für die Nachricht
+     */
+    async buildConsumptionPowerLine(consumptionKWh) {
+        if (this.config.currentConsumptionPower) {
+            const consumptionPowerState = await this.getStateAsync('statistics.currentConsumptionPower');
+            const consumptionPower =
+                consumptionPowerState && consumptionPowerState.val !== null ? consumptionPowerState.val : 0;
+            return `🏠 ${this.translate('Current consumption')}: ${this.round(consumptionPower)} W`;
+        }
+        // Fallback: kein momentaner W-Datenpunkt konfiguriert -> Tageswert in kWh anzeigen
+        return `🏠 ${this.translate('Consumption today')}: ${this.round(consumptionKWh, 1)} kWh`;
+    }
+
+    /**
      * Baue detaillierte Status-Nachricht bei vollem Akku
      *
      * @param {number} soc - Battery state of charge in percent
@@ -968,11 +1009,14 @@ class PvNotifications extends utils.Adapter {
         const feedIn = feedInState && feedInState.val !== null ? feedInState.val : 0;
         const consumption = consumptionState && consumptionState.val !== null ? consumptionState.val : 0;
 
+        // Momentanen Hausverbrauch in W ermitteln (Issue #74)
+        const consumptionPowerLine = await this.buildConsumptionPowerLine(consumption);
+
         const separator = '\n━━━━━━━━━━━━━━━━━━━━━━';
 
         let message = `🔋 *${this.translate('Battery full')}* (${soc}%)${separator}
 ⚡ ${this.translate('Current production')}: ${this.round(power)} W
-🏠 ${this.translate('Current consumption')}: ${this.round(consumption)} W
+${consumptionPowerLine}
 ☀️ ${this.translate('Production today')}: ${this.round(totalProd)} kWh
 🔌 ${this.translate('Feed-in today')}: ${this.round(Math.abs(feedIn), 0)} kWh${separator}`;
 
@@ -1065,10 +1109,13 @@ class PvNotifications extends utils.Adapter {
 
         const separator = '\n━━━━━━━━━━━━━━━━━━━━━━';
 
+        // Momentanen Hausverbrauch in W ermitteln (Issue #74)
+        const consumptionPowerLine = await this.buildConsumptionPowerLine(consumption);
+
         let message = `🔋 *${this.translate('Battery empty')}* (${soc}%)${separator}
 
-⚠️ ${this.translate('Grid consumption today')}: ${this.round(gridPower)} W
-🏠 ${this.translate('Consumption today')}: ${this.round(consumption)} W${separator}`;
+⚠️ ${this.translate('Grid consumption today')}: ${this.round(gridPower)} kWh
+${consumptionPowerLine}${separator}`;
 
         // Wetter-Prognose hinzufügen (heute und morgen)
         const weatherConfigured =

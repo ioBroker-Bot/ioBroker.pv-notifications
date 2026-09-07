@@ -11,6 +11,8 @@
   "label_totalProduction": "Totale Productie Vandaag (kWh)",
   "label_feedIn": "Teruglevering Vandaag (kWh)",
   "label_consumption": "Huisverbruik Vandaag (kWh)",
+  "label_currentConsumptionPower": "Huidig Huisverbruik (W)",
+  "tooltip_currentConsumptionPower": "Momentaan verbruik in W (live waarde). Wordt gebruikt voor het huidige verbruik in batterijstatusberichten (vol/leeg). Indien leeg, wordt PV-vermogen minus teruglevering als alternatief gebruikt.",
   "label_gridPower": "Netverbruik Vandaag (kWh)",
   "label_weeklyProduction": "Productie Deze Week (kWh)",
   "tooltip_weeklyProduction": "sourceanalytix...Production.currentWeek",

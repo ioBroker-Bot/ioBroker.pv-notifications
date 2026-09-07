@@ -11,6 +11,8 @@
   "label_totalProduction": "Całkowita Produkcja Dzisiaj (kWh)",
   "label_feedIn": "Wysyłka Dzisiaj (kWh)",
   "label_consumption": "Zużycie Domu Dzisiaj (kWh)",
+  "label_currentConsumptionPower": "Bieżące Zużycie Domu (W)",
+  "tooltip_currentConsumptionPower": "Chwilowe zużycie w W (wartość na żywo). Używane do bieżącego zużycia w wiadomościach o stanie baterii (pełna/pusta). Jeśli puste, jako alternatywa używana jest moc PV minus oddawanie do sieci.",
   "label_gridPower": "Zużycie Sieci Dzisiaj (kWh)",
   "label_weeklyProduction": "Produkcja W Tym Tygodniu (kWh)",
   "tooltip_weeklyProduction": "sourceanalytix...Production.currentWeek",

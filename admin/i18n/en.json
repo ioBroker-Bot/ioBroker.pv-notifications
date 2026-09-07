@@ -11,6 +11,8 @@
   "label_totalProduction": "Total Production Today (kWh)",
   "label_feedIn": "Feed-in Today (kWh)",
   "label_consumption": "House Consumption Today (kWh)",
+  "label_currentConsumptionPower": "Current House Consumption (W)",
+  "tooltip_currentConsumptionPower": "Instantaneous consumption in W (live value). Used for the current consumption in battery status messages (full/empty). If empty, PV power minus feed-in is used as a fallback.",
   "label_gridPower": "Grid Consumption Today (kWh)",
   "label_weeklyProduction": "Production This Week (kWh)",
   "tooltip_weeklyProduction": "sourceanalytix...Production.currentWeek",

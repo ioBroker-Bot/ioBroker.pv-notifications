@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "pv-notifications",
-    "version": "1.2.29",
+    "version": "1.2.30",
     "titleLang": {
       "en": "PV Notifications",
       "de": "PV-Benachrichtigungen",
@@ -29,6 +29,19 @@
       "zh-cn": "发送 Telegram 通知用于 PV 电池状态"
     },
     "news": {
+      "1.2.30": {
+        "en": "Add optional data point for current house consumption in W. Battery full/empty messages now use this live value instead of the daily kWh total (fixes #74). If not configured, PV power minus feed-in is used as a fallback.",
+        "de": "Optionalen Datenpunkt für den aktuellen Hausverbrauch in W hinzugefügt. Batterie-Voll/Leer-Meldungen verwenden jetzt diesen Live-Wert statt des Tages-kWh-Werts (behebt #74). Wenn nicht konfiguriert, wird ersatzweise PV-Leistung minus Einspeisung genutzt.",
+        "ru": "Добавлен опциональный датапоинт для текущего потребления дома в Вт. Сообщения о полной/пустой батарее теперь используют это значение в реальном времени вместо дневного значения в кВт⋅ч (исправляет #74). Если не настроено, вместо этого используется мощность PV минус подача в сеть.",
+        "fr": "Ajout d'un point de données optionnel pour la consommation actuelle de la maison en W. Les messages batterie pleine/vide utilisent désormais cette valeur en direct au lieu du total quotidien en kWh (corrige #74). Si non configuré, la puissance PV moins l'injection est utilisée en remplacement.",
+        "it": "Aggiunto un punto dati opzionale per il consumo attuale della casa in W. I messaggi batteria piena/vuota ora usano questo valore in tempo reale invece del totale giornaliero in kWh (risolve #74). Se non configurato, viene usata la potenza FV meno l'immissione come alternativa.",
+        "es": "Añadido un punto de datos opcional para el consumo actual del hogar en W. Los mensajes de batería llena/vacía ahora usan este valor en vivo en lugar del total diario en kWh (corrige #74). Si no se configura, se usa la potencia FV menos la inyección como alternativa.",
+        "pl": "Dodano opcjonalny punkt danych dla bieżącego zużycia domu w W. Wiadomości o pełnej/pustej baterii używają teraz tej wartości na żywo zamiast dziennego zużycia w kWh (naprawia #74). Jeśli nie skonfigurowano, jako alternatywa używana jest moc PV minus oddawanie do sieci.",
+        "pt": "Adicionado ponto de dados opcional para o consumo atual da casa em W. As mensagens de bateria cheia/vazia agora usam este valor ao vivo em vez do total diário em kWh (corrige #74). Se não configurado, é usada a potência FV menos a injeção como alternativa.",
+        "nl": "Optioneel gegevenspunt toegevoegd voor het huidige huisverbruik in W. Berichten over volle/lege batterij gebruiken nu deze live-waarde in plaats van het dagelijkse kWh-totaal (lost #74 op). Indien niet geconfigureerd, wordt PV-vermogen minus teruglevering als alternatief gebruikt.",
+        "uk": "Додано опціональний датапоінт для поточного споживання будинку у Вт. Повідомлення про повну/порожню батарею тепер використовують це значення в реальному часі замість денного значення в кВт·год (виправляє #74). Якщо не налаштовано, замість цього використовується потужність PV мінус віддача в мережу.",
+        "zh-cn": "新增可选数据点用于当前家庭功耗（W）。电池满/空消息现在使用此实时值，而不是每日 kWh 总量（修复 #74）。如果未配置，则使用光伏功率减去馈电作为备用值。"
+      },
       "1.2.29": {
         "en": "Fix corrupted UTF-8 separator lines in the monthly stats message (showed as question marks in Telegram). Fix corrupted Russian translations for 'Current charge level' and 'Own consumption'. Weather today in daily stats now shows the temperature reading as '(currently: X°C)' instead of implying a daily value.",
         "de": "Beschädigte UTF-8-Trennzeilen in der Monatsstatistik-Nachricht behoben (erschienen als Fragezeichen in Telegram). Beschädigte russische Übersetzungen für 'Aktueller Ladestand' und 'Eigenverbrauch' behoben. Wetter heute in der Tagesstatistik zeigt den Temperaturwert jetzt als '(aktuell: X°C)' statt einen Tageswert zu suggerieren.",
@@ -106,19 +119,6 @@
         "nl": "Ontbrekende uk-vertalingen toegevoegd aan news, prettier-opmaak gecorrigeerd in main.js",
         "uk": "Додано відсутні uk-переклади до news, виправлено форматування prettier у main.js",
         "zh-cn": "添加 news 中缺失的 uk 翻译，修复 main.js 中的 prettier 格式"
-      },
-      "1.2.23": {
-        "en": "Fix statistics section layout: align daily time, sunset checkbox and sunset object on one row",
-        "de": "Layout der Statistik-Sektion korrigiert: Tageszeit, Sonnenuntergang-Checkbox und Objekt in einer Zeile",
-        "ru": "Исправлен макет секции статистики: время, чекбокс заката и объект в одну строку",
-        "fr": "Correction mise en page section statistiques: heure, case coucher soleil et objet sur une ligne",
-        "it": "Correzione layout sezione statistiche: ora, checkbox tramonto e oggetto su una riga",
-        "es": "Correccion diseno seccion estadisticas: hora, casilla atardecer y objeto en una fila",
-        "pl": "Poprawka ukladu sekcji statystyk: czas, pole zachodu slonca i obiekt w jednym wierszu",
-        "pt": "Correcao layout seccao estatisticas: hora, caixa por do sol e objeto numa linha",
-        "nl": "Lay-out statistieksectie gecorrigeerd: tijd, zonsondergang-checkbox en object op een rij",
-        "zh-cn": "修复统计部分布局：将时间、日落复选框和对象放在同一行",
-        "uk": "Виправлено макет секції статистики: час, чекбокс заходу сонця та обєкт в одному рядку"
       }
     },
     "authors": [
@@ -168,6 +168,7 @@
     "totalProduction": "",
     "feedIn": "",
     "consumption": "",
+    "currentConsumptionPower": "",
     "gridPower": "",
     "batteryCapacityWh": 21000,
     "thresholdFull": 100,
@@ -343,6 +344,19 @@
         "write": false,
         "def": 0,
         "unit": "kWh"
+      }
+    },
+    {
+      "_id": "statistics.currentConsumptionPower",
+      "type": "state",
+      "common": {
+        "name": "Current consumption power",
+        "type": "number",
+        "role": "value.power",
+        "read": true,
+        "write": false,
+        "def": 0,
+        "unit": "W"
       }
     },
     {

@@ -11,6 +11,8 @@
   "label_totalProduction": "Gesamtproduktion heute (kWh)",
   "label_feedIn": "Einspeisung heute (kWh)",
   "label_consumption": "Hausverbrauch heute (kWh)",
+  "label_currentConsumptionPower": "Aktueller Hausverbrauch (W)",
+  "tooltip_currentConsumptionPower": "Momentaner Verbrauch in W (sekündlicher Wert). Wird bei Batterie-Status-Meldungen (voll/leer) für den aktuellen Verbrauch verwendet. Wenn leer, wird ersatzweise PV-Leistung minus Einspeisung genutzt.",
   "label_gridPower": "Netzbezug heute (kWh)",
   "label_weeklyProduction": "Produktion diese Woche (kWh)",
   "tooltip_weeklyProduction": "sourceanalytix...Produktion.currentWeek",
